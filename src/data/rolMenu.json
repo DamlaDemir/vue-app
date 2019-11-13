@@ -1,0 +1,25 @@
+{
+    "yetkiler" : [
+        {
+            "MENU_ID" : 4,
+            "OKU" : true,
+            "YENI" : true,
+            "DUZELT" : true,
+            "SIL" : true
+        },
+        {
+            "MENU_ID" : 5,
+            "OKU" : true,
+            "YENI" : false,
+            "DUZELT" : false,
+            "SIL" : false
+        },
+        {
+            "MENU_ID" : 7,
+            "OKU" : true,
+            "YENI" : true,
+            "DUZELT" : true,
+            "SIL" : false
+        }
+    ]
+}
