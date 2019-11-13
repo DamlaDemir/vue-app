@@ -1,8 +1,8 @@
 {   
         "ID": 1,
         "AKTIF": 1,
-        "TANIM": "Root",
-        "SAYFA": "/root",
+        "TANIM": "Menu",
+        "SAYFA": null,
         "SIRA_NO": 1,
         "BASLIK": true,
         "SILINDI": 0,
@@ -10,17 +10,17 @@
             {
                 "ID": 2,
                 "AKTIF": 1,
-                "TANIM": "item1",
-                "SAYFA": "/item1",
+                "TANIM": "Tanımlamalar",
+                "SAYFA": null,
                 "SIRA_NO": 1,
-                "BASLIK": false,
+                "BASLIK": true,
                 "SILINDI": 0,
                 "MENU": [
                     {
                         "ID": 3,
                         "AKTIF": 1,
-                        "TANIM": "item1.1",
-                        "SAYFA": "/item1.1",
+                        "TANIM": "Ürünler İşlemleri",
+                        "SAYFA": null,
                         "SIRA_NO": 1,
                         "BASLIK": true,
                         "SILINDI": 0,
@@ -28,10 +28,10 @@
                             {
                                 "ID": 4,
                                 "AKTIF": 1,
-                                "TANIM": "item1.1.1",
-                                "SAYFA": "/item1.1.1",
+                                "TANIM": "Ürün",
+                                "SAYFA": "Product",
                                 "SIRA_NO": 1,
-                                "BASLIK": true,
+                                "BASLIK": false,
                                 "SILINDI": 0
                             }
                         ]
@@ -39,10 +39,10 @@
                     {
                         "ID": 5,
                         "AKTIF": 1,
-                        "TANIM": "item1.2",
-                        "SAYFA": "/item1.2",
+                        "TANIM": "Kategoriler",
+                        "SAYFA": "Category",
                         "SIRA_NO": 1,
-                        "BASLIK": true,
+                        "BASLIK": false,
                         "SILINDI": 0,
                         "MENU": null
                     }
@@ -51,19 +51,19 @@
             {
                 "ID": 6,
                 "AKTIF": 1,
-                "TANIM": "item2",
-                "SAYFA": "/item2",
+                "TANIM": "Profile",
+                "SAYFA": null,
                 "SIRA_NO": 2,
-                "BASLIK": false,
+                "BASLIK": true,
                 "SILINDI": 0,
                 "MENU": [
                     {
                         "ID": 7,
                         "AKTIF": 1,
-                        "TANIM": "item2.1",
-                        "SAYFA": "/item2.1",
+                        "TANIM": "Profil",
+                        "SAYFA": "Profile",
                         "SIRA_NO": 1,
-                        "BASLIK": true,
+                        "BASLIK": false,
                         "SILINDI": 0,
                         "MENU": null
                     }

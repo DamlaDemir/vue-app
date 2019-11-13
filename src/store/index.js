@@ -3,9 +3,10 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
+import { menu } from './modules/Menu.module';
+
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {}
+  modules: {
+    menu
+  }
 });
