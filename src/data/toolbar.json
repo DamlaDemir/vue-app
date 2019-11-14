@@ -1,0 +1,29 @@
+{
+    "Visible" : true,
+    "Items" : [
+        {
+            "Title" : "Add",
+            "Icon" : "",
+            "Options" : null,
+            "Sequence" : 1,
+            "Css" : "warning",
+            "Enabled" : true
+        },
+        {
+            "Title" : "Remove",
+            "Icon" : "",
+            "Options" : null,
+            "Sequence" : 2,
+            "Css" : "success",
+            "Enabled" : true
+        },
+        {
+            "Title" : "Edit",
+            "Icon" : "",
+            "Options" : null,
+            "Sequence" : 3,
+            "Css" : "danger",
+            "Enabled" : true
+        }
+    ]
+}

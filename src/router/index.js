@@ -3,11 +3,20 @@ import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+const routes = [{
+  path: `/`,
+  component: () => import('@/views/Home/Index.vue')
+}]
+const router = new VueRouter({
   mode: 'history',
   linkActiveClass: 'active',
-  routes: []
+  routes
 })
 
+router.afterEach(() => {
+console.log("url değişti")
+console.log(router.currentRoute.query)
+});
 
+export default router;
 

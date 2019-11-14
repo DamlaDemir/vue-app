@@ -33,7 +33,7 @@
     },
     computed: {
       pagePath() {
-        return `/${this.menus.SAYFA}/List`;
+        return `/${this.menus.SAYFA}/List?menu_id=${this.menus.ID}`;
       }
     },
     created() {

@@ -1,0 +1,73 @@
+ [
+        {
+            "MENU_ID" : 4,
+            "MENU_AUTH" : [          
+                {
+                    "Title" : "Add",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 1,
+                    "Css" : "warning",
+                    "Enabled" : true
+                },
+                {
+                    "Title" : "Remove",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 2,
+                    "Css" : "success",
+                    "Enabled" : true
+                },
+                {
+                    "Title" : "Edit",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 3,
+                    "Css" : "danger",
+                    "Enabled" : true
+                }             
+            ]
+        },
+        {
+            "MENU_ID" : 5,
+            "MENU_AUTH" : [          
+                {
+                    "Title" : "Add",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 1,
+                    "Css" : "warning",
+                    "Enabled" : true
+                },
+                {
+                    "Title" : "Edit",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 3,
+                    "Css" : "danger",
+                    "Enabled" : true
+                }             
+            ]
+        },
+        {
+            "MENU_ID" : 7,
+            "MENU_AUTH" : [          
+                {
+                    "Title" : "Add",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 1,
+                    "Css" : "warning",
+                    "Enabled" : true
+                },
+                {
+                    "Title" : "Edit",
+                    "Icon" : "",
+                    "Options" : null,
+                    "Sequence" : 3,
+                    "Css" : "danger",
+                    "Enabled" : true
+                }             
+            ]
+        }
+    ]

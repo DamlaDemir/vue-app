@@ -1,13 +1,13 @@
 <template>
-  <div>Category List Page</div>
+  <div>Welcome homepage </div>
 </template>
 
 <script>
 export default {
-  name: "list",
-  components: {}
-};
+
+}
 </script>
 
 <style>
+
 </style>

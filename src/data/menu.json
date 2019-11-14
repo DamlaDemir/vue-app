@@ -1,73 +1,94 @@
-{   
-        "ID": 1,
-        "AKTIF": 1,
-        "TANIM": "Menu",
-        "SAYFA": null,
-        "SIRA_NO": 1,
-        "BASLIK": true,
-        "SILINDI": 0,
-        "MENU": [
+{
+  "ID": 1,
+  "AKTIF": 1,
+  "TANIM": "Menu",
+  "SAYFA": null,
+  "SIRA_NO": 1,
+  "BASLIK": true,
+  "SILINDI": 0,
+  "MENU": [
+    {
+      "ID": 2,
+      "AKTIF": 1,
+      "TANIM": "Operations",
+      "SAYFA": null,
+      "SIRA_NO": 1,
+      "BASLIK": true,
+      "SILINDI": 0,
+      "MENU": [
+        {
+          "ID": 3,
+          "AKTIF": 1,
+          "TANIM": "Product Operations",
+          "SAYFA": null,
+          "SIRA_NO": 1,
+          "BASLIK": true,
+          "SILINDI": 0,
+          "MENU": [
             {
-                "ID": 2,
-                "AKTIF": 1,
-                "TANIM": "Tanımlamalar",
-                "SAYFA": null,
-                "SIRA_NO": 1,
-                "BASLIK": true,
-                "SILINDI": 0,
-                "MENU": [
-                    {
-                        "ID": 3,
-                        "AKTIF": 1,
-                        "TANIM": "Ürünler İşlemleri",
-                        "SAYFA": null,
-                        "SIRA_NO": 1,
-                        "BASLIK": true,
-                        "SILINDI": 0,
-                        "MENU": [
-                            {
-                                "ID": 4,
-                                "AKTIF": 1,
-                                "TANIM": "Ürün",
-                                "SAYFA": "Product",
-                                "SIRA_NO": 1,
-                                "BASLIK": false,
-                                "SILINDI": 0
-                            }
-                        ]
-                    },
-                    {
-                        "ID": 5,
-                        "AKTIF": 1,
-                        "TANIM": "Kategoriler",
-                        "SAYFA": "Category",
-                        "SIRA_NO": 1,
-                        "BASLIK": false,
-                        "SILINDI": 0,
-                        "MENU": null
-                    }
-                ]
-            },
-            {
-                "ID": 6,
-                "AKTIF": 1,
-                "TANIM": "Profile",
-                "SAYFA": null,
-                "SIRA_NO": 2,
-                "BASLIK": true,
-                "SILINDI": 0,
-                "MENU": [
-                    {
-                        "ID": 7,
-                        "AKTIF": 1,
-                        "TANIM": "Profil",
-                        "SAYFA": "Profile",
-                        "SIRA_NO": 1,
-                        "BASLIK": false,
-                        "SILINDI": 0,
-                        "MENU": null
-                    }
-                ]
+              "ID": 4,
+              "AKTIF": 1,
+              "TANIM": "Product",
+              "SAYFA": "Product",
+              "SIRA_NO": 1,
+              "BASLIK": false,
+              "SILINDI": 0
             }
-        ]   
+          ]
+        },
+        {
+          "ID": 5,
+          "AKTIF": 1,
+          "TANIM": "Category",
+          "SAYFA": "Category",
+          "SIRA_NO": 1,
+          "BASLIK": false,
+          "SILINDI": 0,
+          "MENU": null
+        }
+      ]
+    },
+    {
+      "ID": 6,
+      "AKTIF": 1,
+      "TANIM": "Profile",
+      "SAYFA": null,
+      "SIRA_NO": 2,
+      "BASLIK": true,
+      "SILINDI": 0,
+      "MENU": [
+        {
+          "ID": 7,
+          "AKTIF": 1,
+          "TANIM": "Profile",
+          "SAYFA": "Profile",
+          "SIRA_NO": 1,
+          "BASLIK": false,
+          "SILINDI": 0,
+          "MENU": null
+        }
+      ]
+    },
+    {
+      "ID": 8,
+      "AKTIF": 1,
+      "TANIM": "Settings",
+      "SAYFA": null,
+      "SIRA_NO": 2,
+      "BASLIK": true,
+      "SILINDI": 0,
+      "MENU": [
+        {
+          "ID": 9,
+          "AKTIF": 1,
+          "TANIM": "Settings",
+          "SAYFA": "Setting",
+          "SIRA_NO": 1,
+          "BASLIK": false,
+          "SILINDI": 0,
+          "MENU": null
+        }
+      ]
+    }
+  ]
 }
