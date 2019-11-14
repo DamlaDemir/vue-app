@@ -6,6 +6,7 @@
   "SIRA_NO": 1,
   "BASLIK": true,
   "SILINDI": 0,
+  "ICON": "fas fa-ellipsis-v",
   "MENU": [
     {
       "ID": 2,
@@ -15,15 +16,17 @@
       "SIRA_NO": 1,
       "BASLIK": true,
       "SILINDI": 0,
+      "ICON": "fas fa-book-open",
       "MENU": [
         {
           "ID": 3,
           "AKTIF": 1,
-          "TANIM": "Product Operations",
+          "TANIM": "Product Op.",
           "SAYFA": null,
           "SIRA_NO": 1,
           "BASLIK": true,
           "SILINDI": 0,
+          "ICON": "fas fa-book-open",
           "MENU": [
             {
               "ID": 4,
@@ -32,7 +35,8 @@
               "SAYFA": "Product",
               "SIRA_NO": 1,
               "BASLIK": false,
-              "SILINDI": 0
+              "SILINDI": 0,
+              "ICON": "fas fa-book-open"
             }
           ]
         },
@@ -44,7 +48,8 @@
           "SIRA_NO": 1,
           "BASLIK": false,
           "SILINDI": 0,
-          "MENU": null
+          "MENU": null,
+          "ICON": "fas fa-book-open"
         }
       ]
     },
@@ -56,6 +61,7 @@
       "SIRA_NO": 2,
       "BASLIK": true,
       "SILINDI": 0,
+      "ICON": "fas fa-book-open",
       "MENU": [
         {
           "ID": 7,
@@ -65,7 +71,8 @@
           "SIRA_NO": 1,
           "BASLIK": false,
           "SILINDI": 0,
-          "MENU": null
+          "MENU": null,
+          "ICON": "fas fa-book-open"
         }
       ]
     },
@@ -77,6 +84,7 @@
       "SIRA_NO": 2,
       "BASLIK": true,
       "SILINDI": 0,
+      "ICON": "fas fa-book-open",
       "MENU": [
         {
           "ID": 9,
@@ -86,7 +94,8 @@
           "SIRA_NO": 1,
           "BASLIK": false,
           "SILINDI": 0,
-          "MENU": null
+          "MENU": null,
+          "ICON": "fas fa-book-open"
         }
       ]
     }

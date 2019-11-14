@@ -5,7 +5,10 @@
         :variant="item.Css"
         v-for="(item,index) in getToolbarItems"
         v-bind:key="index"
-      >{{item.Title}}</b-button>
+        v-show="isForm(item.Title)"
+      >
+        <i :class="item.Icon" />
+      </b-button>
     </b-button-group>
   </div>
 </template>
@@ -29,7 +32,16 @@ export default {
       return this.toolbarItems;
     }
   },
-  methods: {}
+  methods: {
+    isForm(item) {
+      debugger;
+      if (this.$route.fullPath.includes("Form")) {
+        if (item === "Remove") return false;
+        else if (item === "Edit") return false;
+        else return true;
+      } else return true;
+    }
+  }
 };
 </script>
 

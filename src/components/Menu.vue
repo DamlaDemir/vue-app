@@ -1,13 +1,19 @@
 <template>
-  <li class="folder" v-bind:class="[menus.BASLIK ? 'is-folder' :'is-leaf' ]">
+  <li class="liStyle">
     <span v-if="!menus.BASLIK">
-    <router-link :to="pagePath">
-    <span>{{ menus.TANIM }}</span>
-    </router-link>
+      <router-link :to="pagePath">
+        <span class="liStyle">{{ menus.TANIM }}</span>
+      </router-link>
     </span>
-    <span v-else>
-      <span v-on:click="expand()">{{ menus.TANIM }}</span>
-    </span>  
+    <span v-else v-on:click="expand()">
+      <span class="p-1">
+        <i :class="menus.ICON"></i>
+      </span>
+      <span>{{ menus.TANIM }}</span>
+      <span class="p-1">
+        <i class="fas fa-angle-down"></i>
+      </span>
+    </span>
     <ul class="sub-folders" v-if="menus.MENU && menus.MENU.length > 0" v-show="showChildren">
       <Menu v-for="menuItem in menus.MENU" :menus="menuItem" :key="menuItem.ID"></Menu>
     </ul>
@@ -15,34 +21,40 @@
   </li>
 </template>
 <script>
-  export default { 
-    data() {
-      return { showChildren: true }
-    },
-    props: {
-      menus: Object
-    },
-    name: 'Menu',
-    methods: {
-      expand() {
-        if (!this.menus.BASLIK) {
-          return;
-        }
-        this.showChildren = !this.showChildren;
+export default {
+  data() {
+    return { showChildren: true };
+  },
+  props: {
+    menus: Object
+  },
+  name: "Menu",
+  methods: {
+    expand() {
+      if (!this.menus.BASLIK) {
+        return;
       }
-    },
-    computed: {
-      pagePath() {
-        return `/${this.menus.SAYFA}/List?menu_id=${this.menus.ID}`;
-      }
-    },
-    created() {
+      this.showChildren = !this.showChildren;
     }
-  }
+  },
+  computed: {
+    pagePath() {
+      return `/${this.menus.SAYFA}/List?menu_id=${this.menus.ID}`;
+    }
+  },
+  created() {}
+};
 </script>
 
 <style scoped>
-ul.folders {
+li.liStyle {
+  color: white !important;
+  list-style: none;
+}
+a {
+  color: white !important;
+}
+/* ul.folders {
   padding: 1rem;
   margin: 0;
   box-sizing: border-box;
@@ -78,5 +90,5 @@ div.folder-empty {
   padding: 1rem 1rem 0 1rem;
   color: #000;
   opacity: 0.5
-}
+} */
 </style>

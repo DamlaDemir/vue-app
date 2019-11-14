@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <navbar />
     <div class="row">
-      <div id="menu" class="col-md-2">
+      <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
         <Menu :menus="menus"></Menu>
       </div>
-      <div class="col-md-10">
-        <Toolbar :toolbarItems="toolbar" />
-        <router-view />
+      <div class="col-md-10 col-lg-10 ml-0 pl-0">
+        <navbar />
+        <div class="toolbar mt-2">
+          <Toolbar :toolbarItems="toolbar" />
+        </div>
+        <div class="routerView">
+          <router-view />
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +30,8 @@ export default {
   data() {
     return {
       data: [],
-      toolbarItems: {}
+      toolbarItems: {},
+      menuShow: true
     };
   },
   created() {},
@@ -57,12 +62,22 @@ export default {
       debugger;
       console.log("App vue add fonksiyon");
       console.log(this.$children.length);
+    },
+    showHideMenu() {
+      this.menuShow = !this.menuShow;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-.row {
-  padding-top: 2%;
+.menuStyle {
+  height: 100vh;
+}
+.toolbar {
+  padding-left: 50%;
+}
+.routerView {
+  padding-top: 3%;
+  padding-left: 5%;
 }
 </style>
