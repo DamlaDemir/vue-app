@@ -1,99 +1,189 @@
 [
-    {
-        "MENU_ID": 4,
-        "MENU_AUTH": [
-            {
-                "Title": "Add",
-                "Icon": "fas fa-plus-circle fa-2x",
-                "Options": null,
-                "Sequence": 1,
-                "Css": "warning",
-                "Show": true,
-                "Path": "/Product/Form"
-            },
-            {
-                "Title": "Remove",
-                "Icon": "fas fa-trash-alt fa-2x",
-                "Options": null,
-                "Sequence": 2,
-                "Css": "success",
-                "Show": true
-            },
-            {
-                "Title": "Edit",
-                "Icon": "fas fa-edit fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "danger",
-                "Show": true,
-                "Path": "/Category/Form"
-            },
-            {
-                "Title": "Save",
-                "Icon": "far fa-save fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "primary",
-                "Show": true
-            }
-        ]
-    },
-    {
-        "MENU_ID": 5,
-        "MENU_AUTH": [
-            {
-                "Title": "Add",
-                "Icon": "fas fa-plus-circle fa-2x",
-                "Options": null,
-                "Sequence": 1,
-                "Css": "warning",
-                "Show": true
-            },
-            {
-                "Title": "Edit",
-                "Icon": "fas fa-edit fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "danger",
-                "Show": true
-            },
-            {
-                "Title": "Save",
-                "Icon": "far fa-save fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "primary",
-                "Show": true
-            }
-        ]
-    },
-    {
-        "MENU_ID": 7,
-        "MENU_AUTH": [
-            {
-                "Title": "Add",
-                "Icon": "fas fa-plus-circle fa-2x",
-                "Options": null,
-                "Sequence": 1,
-                "Css": "warning",
-                "Show": true
-            },
-            {
-                "Title": "Edit",
-                "Icon": "fas fa-edit fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "danger",
-                "Show": true
-            },
-            {
-                "Title": "Save",
-                "Icon": "far fa-save fa-2x",
-                "Options": null,
-                "Sequence": 3,
-                "Css": "primary",
-                "Show": true
-            }
-        ]
-    }
+  {
+    "MENU_ID": 4,
+    "MENU_AUTH": [
+      {
+        "Title": "Add",
+        "Icon": "fas fa-plus-circle fa-2x",
+        "Options": null,
+        "Sequence": 1,
+        "Css": "warning",
+        "Show": true,
+        "Path": "/Product/Form",
+        "Type": 1
+      },
+      {
+        "Title": "Remove",
+        "Icon": "fas fa-trash-alt fa-2x",
+        "Options": null,
+        "Sequence": 2,
+        "Css": "success",
+        "Show": true,
+        "Type": 2
+      },
+      {
+        "Title": "Edit",
+        "Icon": "fas fa-edit fa-2x",
+        "Options": null,
+        "Sequence": 3,
+        "Css": "danger",
+        "Show": true,
+        "Path": "/Product/Form",
+        "Type": 3
+      },
+      {
+        "Title": "Save",
+        "Icon": "far fa-save fa-2x",
+        "Options": null,
+        "Sequence": 4,
+        "Css": "primary",
+        "Show": true,
+        "Type": 5
+      },
+      {
+        "Title": "View",
+        "Icon": "fas fa-search fa-2x",
+        "Options": null,
+        "Sequence": 5,
+        "Css": "secondary",
+        "Show": true,
+        "Type": 4
+      }
+    ]
+  },
+  {
+    "MENU_ID": 5,
+    "MENU_AUTH": [
+      {
+        "Title": "Add",
+        "Icon": "fas fa-plus-circle fa-2x",
+        "Options": null,
+        "Sequence": 1,
+        "Css": "warning",
+        "Show": true,
+        "Type": 1,
+        "Path": "/Category/Form"
+      },
+      {
+        "Title": "Edit",
+        "Icon": "fas fa-edit fa-2x",
+        "Options": null,
+        "Sequence": 2,
+        "Css": "danger",
+        "Show": true,
+        "Type": 3,
+        "Path": "/Category/Form"
+      },
+      {
+        "Title": "Save",
+        "Icon": "far fa-save fa-2x",
+        "Options": null,
+        "Sequence": 3,
+        "Css": "primary",
+        "Show": true,
+        "Type": 5
+      },
+      {
+        "Title": "View",
+        "Icon": "fas fa-search fa-2x",
+        "Options": null,
+        "Sequence": 4,
+        "Css": "secondary",
+        "Show": true,
+        "Type": 4
+      },
+      {
+        "Title": "Remove",
+        "Icon": "fas fa-trash-alt fa-2x",
+        "Options": null,
+        "Sequence": 5,
+        "Css": "success",
+        "Show": true,
+        "Type": 2
+      }
+    ]
+  },
+  {
+    "MENU_ID": 7,
+    "MENU_AUTH": [
+      {
+        "Title": "Add",
+        "Icon": "fas fa-plus-circle fa-2x",
+        "Options": null,
+        "Sequence": 1,
+        "Css": "warning",
+        "Show": true,
+        "Type": 1,
+        "Path": "/Profile/Form"
+      },
+      {
+        "Title": "Edit",
+        "Icon": "fas fa-edit fa-2x",
+        "Options": null,
+        "Sequence": 2,
+        "Css": "danger",
+        "Show": true,
+        "Type": 3
+      },
+      {
+        "Title": "Save",
+        "Icon": "far fa-save fa-2x",
+        "Options": null,
+        "Sequence": 3,
+        "Css": "primary",
+        "Show": true,
+        "Type": 5
+      },
+      {
+        "Title": "View",
+        "Icon": "fas fa-search fa-2x",
+        "Options": null,
+        "Sequence": 4,
+        "Css": "secondary",
+        "Show": true,
+        "Type": 4
+      }
+    ]
+  },
+  {
+    "MENU_ID": 9,
+    "MENU_AUTH": [
+      {
+        "Title": "Add",
+        "Icon": "fas fa-plus-circle fa-2x",
+        "Options": null,
+        "Sequence": 1,
+        "Css": "warning",
+        "Show": true,
+        "Type": 1
+      },
+      {
+        "Title": "Edit",
+        "Icon": "fas fa-edit fa-2x",
+        "Options": null,
+        "Sequence": 2,
+        "Css": "danger",
+        "Show": true,
+        "Type": 3
+      },
+      {
+        "Title": "Save",
+        "Icon": "far fa-save fa-2x",
+        "Options": null,
+        "Sequence": 3,
+        "Css": "primary",
+        "Show": true,
+        "Type": 5
+      },
+      {
+        "Title": "View",
+        "Icon": "fas fa-search fa-2x",
+        "Options": null,
+        "Sequence": 4,
+        "Css": "secondary",
+        "Show": true,
+        "Type": 4
+      }
+    ]
+  }
 ]

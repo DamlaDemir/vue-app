@@ -55,7 +55,7 @@ new Vue({
               console.log(`${menuItem.SAYFA} form component var`);
               const routerObj = {
                 name: `/${menuItem.SAYFA}/Form`,
-                path: `/${menuItem.SAYFA}/Form`,
+                path: `/${menuItem.SAYFA}/Form/:id?`,
                 component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`),
                 type: "form"
               };

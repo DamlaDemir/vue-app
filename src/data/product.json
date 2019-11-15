@@ -1,46 +1,46 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Product1",
-            "price": 50,
-            "description": "Product1 Description",
-            "categoryId": 1
-        },
-        {
-            "id": 2,
-            "name": "Product2",
-            "price": 70,
-            "description": "Product2 Description",
-            "categoryId": 1
-        },
-        {
-            "id": 3,
-            "name": "Product3",
-            "price": 80,
-            "description": "Product3 Description",
-            "categoryId": 2
-        },
-        {
-            "id": 4,
-            "name": "Product4",
-            "price": 90,
-            "description": "Product4 Description",
-            "categoryId": 2
-        },
-        {
-            "id": 5,
-            "name": "Product5",
-            "price": 90,
-            "description": "Product5 Description",
-            "categoryId": 2
-        },
-        {
-            "id": 6,
-            "name": "Product6",
-            "price": 90,
-            "description": "Product6 Description",
-            "categoryId": 3
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Product1",
+      "price": 50,
+      "description": "Product1 Description",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Product2",
+      "price": 70,
+      "description": "Product2 Description",
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "name": "Product3",
+      "price": 80,
+      "description": "Product3 Description",
+      "categoryId": 2
+    },
+    {
+      "id": 4,
+      "name": "Product4",
+      "price": 90,
+      "description": "Product4 Description",
+      "categoryId": 2
+    },
+    {
+      "id": 5,
+      "name": "Product5",
+      "price": 90,
+      "description": "Product5 Description",
+      "categoryId": 2
+    },
+    {
+      "id": 6,
+      "name": "Product6",
+      "price": 90,
+      "description": "Product6 Description",
+      "categoryId": 3
+    }
+  ]
 }

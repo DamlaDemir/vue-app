@@ -1,38 +1,78 @@
 <template>
-  <div>
-    <b-card-group deck>
-      <b-card
-        border-variant="danger"
-        header="Product Form"
-        header-border-variant="danger"
-        header-text-variant="danger"
-        align="center"
-      >
-        <b-card-text>
-          <b-row class="my-1">
-            <b-col sm="2">
-              <label for="input-default">Name:</label>
-            </b-col>
-            <b-col sm="10">
-              <b-form-input id="input-default" placeholder="Enter your name"></b-form-input>
-            </b-col>
-          </b-row>
-          <b-row class="my-1">
-            <b-col sm="2">
-              <label for="input-default">Description:</label>
-            </b-col>
-            <b-col sm="10">
-              <b-form-input id="input-default" placeholder="Enter your description"></b-form-input>
-            </b-col>
-          </b-row>
-        </b-card-text>
-      </b-card>
-    </b-card-group>
+  <div class="col-md-11">
+    <b-card header="Product Form">
+      <b-form @submit="onSubmit" v-if="show">
+        <b-form-group id="input-group-1" label="Product Name" label-for="name">
+          <b-form-input id="name" v-model="form.name" required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-2" label="Description" label-for="description">
+          <b-form-input id="description" v-model="form.description" required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-2" label="Price" label-for="price">
+          <b-form-input id="price" v-model="form.price" required></b-form-input>
+        </b-form-group>
+
+        <b-form-group id="input-group-3" label="Category:" label-for="category">
+          <b-form-select id="category" v-model="form.food" :options="foods" required></b-form-select>
+        </b-form-group>
+      </b-form>
+    </b-card>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      formObj: {
+        name: "",
+        description: "",
+        price: null
+      },
+      foods: [
+        { text: "Select One", value: null },
+        "Carrots",
+        "Beans",
+        "Tomatoes",
+        "Corn"
+      ],
+      show: true,
+      list: []
+    };
+  },
+  methods: {
+    onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
+    },
+    getData() {
+      debugger;
+      if (this.$route.params.id !== undefined) {
+        this.list = require("@/data/product.json");
+        this.formObj = this.list.products.filter(
+          x => x.id == parseInt(this.$route.params.id)
+        )[0];
+      }
+    },
+    addProduct() {
+      debugger;
+      console.log("added product");
+    }
+  },
+  created() {
+    debugger;
+    this.getData();
+    this.$parent.saveFunction = this.addProduct;
+  },
+  computed: {
+    form() {
+      debugger;
+      return this.formObj;
+    }
+  }
+};
 </script>
 
 <style>

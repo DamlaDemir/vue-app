@@ -10,7 +10,8 @@
           <Toolbar :toolbarItems="toolbar" />
         </div>
         <div class="routerView">
-          <router-view />
+          <b-alert :show="showAlert" variant="warning">{{alertText}}</b-alert>
+          <router-view :key="$route.fullPath" />
         </div>
       </div>
     </div>
@@ -31,7 +32,11 @@ export default {
     return {
       data: [],
       toolbarItems: {},
-      menuShow: true
+      menuShow: true,
+      selectedRows: [],
+      alertShowTime: 0,
+      alertText: "",
+      saveFunction: Function
     };
   },
   created() {},
@@ -40,13 +45,13 @@ export default {
       return this.$store.state.menu.menus;
     },
     toolbar() {
-      debugger;
       let toolbar = [];
       if (this.menuId != undefined && Object.keys(this.roleMenus).length > 0) {
         let t = this.roleMenus.filter(
           x => x.MENU_ID === parseInt(this.menuId)
         )[0];
-        if (t.MENU_AUTH.length > 0) toolbar = t.MENU_AUTH;
+        if (t.MENU_AUTH.length > 0)
+          toolbar = t.MENU_AUTH.sort((x, y) => x.Sequence - y.Sequence);
       }
       return toolbar;
     },
@@ -55,11 +60,13 @@ export default {
     },
     roleMenus() {
       return this.$store.state.toolbar.roleMenus;
+    },
+    showAlert() {
+      return this.alertShowTime;
     }
   },
   methods: {
     Add() {
-      debugger;
       console.log("App vue add fonksiyon");
       console.log(this.$children.length);
     },
