@@ -45,6 +45,18 @@ export default {
         if (item === ToolbarItemTypeEnum.Save) return false;
         else return true;
     },
+    selectedRowsControl() {
+      if (this.$parent.selectedRows.length > 1) {
+        this.$parent.alertShowTime = 4;
+        this.$parent.alertText = "Lütfen tek kayıt seçiniz";
+        return false;
+      } else if (this.$parent.selectedRows.length === 0) {
+        this.$parent.alertShowTime = 4;
+        this.$parent.alertText = "Lütfen kayıt seçiniz";
+        return false;
+      } else return true;
+    },
+
     navigate(item) {
       debugger;
       console.log(this.$parent.menuId);
@@ -59,23 +71,22 @@ export default {
               });
           break;
         case ToolbarItemTypeEnum.Edit:
-          if (this.$parent.selectedRows.length > 1) {
-            this.$parent.alertShowTime = 4;
-            this.$parent.alertText = "Lütfen tek kayıt seçiniz";
-          } else if (this.$parent.selectedRows.length === 0) {
-            this.$parent.alertShowTime = 4;
-            this.$parent.alertText = "Lütfen kayıt seçiniz";
-          } else {
+          if (this.selectedRowsControl) {
             this.$router.push(
               `${item.Path}/${this.$parent.selectedRows[0]}?menu_id=${this.$parent.menuId}`
             );
           }
           break;
         case ToolbarItemTypeEnum.View:
-          // code block
+          debugger;
+          this.$parent.formComponentName = "Category";
+          this.$store.dispatch("toolbar/changeShowModal", true);
+
           break;
         case ToolbarItemTypeEnum.Remove:
-          // code block
+          if (this.selectedRowsControl) {
+            this.$emit(this.$parent.removeFunction());
+          }
           break;
         case ToolbarItemTypeEnum.Save:
           this.$emit(this.$parent.saveFunction());

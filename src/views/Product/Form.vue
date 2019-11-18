@@ -48,7 +48,6 @@ export default {
       alert(JSON.stringify(this.form));
     },
     getData() {
-      debugger;
       if (this.$route.params.id !== undefined) {
         this.list = require("@/data/product.json");
         this.formObj = this.list.products.filter(
@@ -56,19 +55,16 @@ export default {
         )[0];
       }
     },
-    addProduct() {
-      debugger;
+    saveProduct() {
       console.log("added product");
     }
   },
   created() {
-    debugger;
     this.getData();
-    this.$parent.saveFunction = this.addProduct;
+    this.$parent.saveFunction = this.saveProduct;
   },
   computed: {
     form() {
-      debugger;
       return this.formObj;
     }
   }

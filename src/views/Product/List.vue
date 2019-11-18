@@ -27,14 +27,16 @@ export default {
   components: {},
   created() {
     this.list = require("@/data/product.json");
+    this.$parent.removeFunction = this.removeProduct;
   },
   methods: {
     onRowSelected(items) {
-      debugger;
       this.$parent.selectedRows = items.map(x => {
         return x.id;
       });
-      console.log(this.$parent.selectedRows);
+    },
+    removeProduct() {
+      console.log("product removed");
     }
   }
 };

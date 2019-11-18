@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div class="row">
+      <Modal>
+        <component v-bind:is="formComponent"></component>
+      </Modal>
       <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
         <Menu :menus="menus"></Menu>
       </div>
@@ -21,12 +24,14 @@
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Toolbar from "@/components/Toolbar";
+import Modal from "@/components/Modal";
 
 export default {
   components: {
     Menu,
     Navbar,
-    Toolbar
+    Toolbar,
+    Modal
   },
   data() {
     return {
@@ -36,13 +41,19 @@ export default {
       selectedRows: [],
       alertShowTime: 0,
       alertText: "",
-      saveFunction: Function
+      saveFunction: Function,
+      removeFunction: Function,
+      formComponentName: ""
     };
   },
   created() {},
   computed: {
     menus() {
       return this.$store.state.menu.menus;
+    },
+    formComponent() {
+      debugger;
+      return () => import(`@/views/${this.formComponentName}/Form.vue`);
     },
     toolbar() {
       let toolbar = [];

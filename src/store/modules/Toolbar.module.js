@@ -1,7 +1,8 @@
 const getDefaultState = () => {
   return {
     roleMenus: [],
-    toolbarItems: []
+    toolbarItems: [],
+    showModal: false
   };
 };
 
@@ -16,6 +17,9 @@ export const toolbar = {
     },
     setToolbarItems(state, toolbarItems) {
       state.toolbarItems = toolbarItems;
+    },
+    setShowModal(state, value) {
+      state.showModal = value;
     }
   },
   actions: {
@@ -24,6 +28,9 @@ export const toolbar = {
     },
     fetchToolbarItems(context) {
       context.commit("setToolbarItems", require("@/data/toolbar.json"));
+    },
+    changeShowModal(context, value) {
+      context.commit("setShowModal", value);
     }
   }
 };
