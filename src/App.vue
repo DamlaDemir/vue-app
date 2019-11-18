@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div class="row">
-      <Modal>
+      <Modal :modalShow="$store.state.toolbar.showModal">
         <component v-bind:is="formComponent"></component>
       </Modal>
       <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
         <Menu :menus="menus"></Menu>
       </div>
-      <div class="col-md-10 col-lg-10 ml-0 pl-0">
+      <div :class="menuShow ? 'col-md-10 col-lg-10 ml-0 pl-0' : 'col-md-12 col-lg-12 ml-0 pl-0'">
         <navbar />
         <div class="toolbar mt-2">
           <Toolbar :toolbarItems="toolbar" />
@@ -42,8 +42,7 @@ export default {
       alertShowTime: 0,
       alertText: "",
       saveFunction: Function,
-      removeFunction: Function,
-      formComponentName: ""
+      removeFunction: Function
     };
   },
   created() {},
@@ -53,7 +52,8 @@ export default {
     },
     formComponent() {
       debugger;
-      return () => import(`@/views/${this.formComponentName}/Form.vue`);
+      return () =>
+        import(`@/views${this.$store.state.toolbar.formComponentPath}.vue`);
     },
     toolbar() {
       let toolbar = [];

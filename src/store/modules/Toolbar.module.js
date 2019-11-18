@@ -2,7 +2,8 @@ const getDefaultState = () => {
   return {
     roleMenus: [],
     toolbarItems: [],
-    showModal: false
+    showModal: false,
+    formComponentPath: "/Category/Form"
   };
 };
 
@@ -20,6 +21,10 @@ export const toolbar = {
     },
     setShowModal(state, value) {
       state.showModal = value;
+    },
+    setFormComponent(state, value) {
+      debugger;
+      state.formComponentPath = value;
     }
   },
   actions: {
@@ -30,7 +35,10 @@ export const toolbar = {
       context.commit("setToolbarItems", require("@/data/toolbar.json"));
     },
     changeShowModal(context, value) {
-      context.commit("setShowModal", value);
+      return context.commit("setShowModal", value);
+    },
+    importFormComponent(context, value) {
+      return context.commit("setFormComponent", value);
     }
   }
 };

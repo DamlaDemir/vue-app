@@ -47,7 +47,8 @@
         "Sequence": 5,
         "Css": "secondary",
         "Show": true,
-        "Type": 4
+        "Type": 4,
+        "Path": "/Product/Form"
       }
     ]
   },
@@ -90,7 +91,8 @@
         "Sequence": 4,
         "Css": "secondary",
         "Show": true,
-        "Type": 4
+        "Type": 4,
+        "Path": "/Category/Form"
       },
       {
         "Title": "Remove",
@@ -141,7 +143,8 @@
         "Sequence": 4,
         "Css": "secondary",
         "Show": true,
-        "Type": 4
+        "Type": 4,
+        "Path": "/Profile/Form"
       }
     ]
   },
@@ -155,7 +158,8 @@
         "Sequence": 1,
         "Css": "warning",
         "Show": true,
-        "Type": 1
+        "Type": 1,
+        "Path": "/Setting/Form"
       },
       {
         "Title": "Edit",
@@ -164,7 +168,8 @@
         "Sequence": 2,
         "Css": "danger",
         "Show": true,
-        "Type": 3
+        "Type": 3,
+        "Path": "/Setting/Form"
       },
       {
         "Title": "Save",
@@ -182,7 +187,8 @@
         "Sequence": 4,
         "Css": "secondary",
         "Show": true,
-        "Type": 4
+        "Type": 4,
+        "Path": "/Setting/Form"
       }
     ]
   }

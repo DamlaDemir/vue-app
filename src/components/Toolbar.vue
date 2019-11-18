@@ -79,8 +79,11 @@ export default {
           break;
         case ToolbarItemTypeEnum.View:
           debugger;
-          this.$parent.formComponentName = "Category";
-          this.$store.dispatch("toolbar/changeShowModal", true);
+          this.$store
+            .dispatch("toolbar/importFormComponent", item.Path)
+            .then(() => {
+              this.$store.dispatch("toolbar/changeShowModal", true);
+            });
 
           break;
         case ToolbarItemTypeEnum.Remove:

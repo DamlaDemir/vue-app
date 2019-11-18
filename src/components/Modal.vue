@@ -1,5 +1,5 @@
 <template>
-  <b-modal v-model="modalShow" @hidden="hideModal" :size="size" hide-footer>
+  <b-modal v-model="showModal" @hidden="hideModal" :size="size" hide-footer>
     <template v-slot:modal-title>{{title}}</template>
     <div class="d-block text-center">
       <slot></slot>
@@ -17,15 +17,19 @@ export default {
     size: {
       type: String,
       default: "xl"
+    },
+    modalShow: {
+      type: Boolean,
+      default: false
     }
   },
   created() {
     debugger;
   },
   computed: {
-    modalShow() {
+    showModal() {
       debugger;
-      return this.$store.state.toolbar.showModal;
+      return this.modalShow;
     }
   },
   methods: {
