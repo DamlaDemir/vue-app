@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div class="row">
-      <Modal :modalShow="$store.state.toolbar.showModal">
-        <component v-bind:is="formComponent"></component>
+      <Modal :modalShow="showModal">
+        <keep-alive>
+          <component :is="this.$store.state.toolbar.formComponent"></component>
+        </keep-alive>
       </Modal>
       <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
         <Menu :menus="menus"></Menu>
@@ -35,25 +37,22 @@ export default {
   },
   data() {
     return {
-      data: [],
       toolbarItems: {},
       menuShow: true,
       selectedRows: [],
       alertShowTime: 0,
       alertText: "",
       saveFunction: Function,
-      removeFunction: Function
+      removeFunction: Function,
+      showModal: false
     };
   },
-  created() {},
+  created() {
+    this.$store.dispatch("toolbar/changeFormComponent", "/Category/Form");
+  },
   computed: {
     menus() {
       return this.$store.state.menu.menus;
-    },
-    formComponent() {
-      debugger;
-      return () =>
-        import(`@/views${this.$store.state.toolbar.formComponentPath}.vue`);
     },
     toolbar() {
       let toolbar = [];
@@ -77,10 +76,6 @@ export default {
     }
   },
   methods: {
-    Add() {
-      console.log("App vue add fonksiyon");
-      console.log(this.$children.length);
-    },
     showHideMenu() {
       this.menuShow = !this.menuShow;
     }

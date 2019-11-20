@@ -60,7 +60,7 @@ export default {
     }
   },
   created() {
-    this.getData();
+    this.getData(); //Düzenleme ekranından geliniyorsa
     this.$parent.saveFunction = this.saveProduct;
   },
   computed: {

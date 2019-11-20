@@ -46,6 +46,7 @@ export default {
         else return true;
     },
     selectedRowsControl() {
+      debugger;
       if (this.$parent.selectedRows.length > 1) {
         this.$parent.alertShowTime = 4;
         this.$parent.alertText = "Lütfen tek kayıt seçiniz";
@@ -71,7 +72,7 @@ export default {
               });
           break;
         case ToolbarItemTypeEnum.Edit:
-          if (this.selectedRowsControl) {
+          if (this.selectedRowsControl()) {
             this.$router.push(
               `${item.Path}/${this.$parent.selectedRows[0]}?menu_id=${this.$parent.menuId}`
             );
@@ -79,15 +80,13 @@ export default {
           break;
         case ToolbarItemTypeEnum.View:
           debugger;
-          this.$store
-            .dispatch("toolbar/importFormComponent", item.Path)
-            .then(() => {
-              this.$store.dispatch("toolbar/changeShowModal", true);
-            });
-
+          if (this.selectedRowsControl()) {
+            this.$store.dispatch("toolbar/changeFormComponent", item.Path);
+            this.$parent.showModal = true;
+          }
           break;
         case ToolbarItemTypeEnum.Remove:
-          if (this.selectedRowsControl) {
+          if (this.selectedRowsControl()) {
             this.$emit(this.$parent.removeFunction());
           }
           break;

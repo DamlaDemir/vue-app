@@ -3,8 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
+import AsyncComputed from "vue-async-computed";
 
 Vue.use(BootstrapVue);
+Vue.use(AsyncComputed);
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -41,8 +43,7 @@ new Vue({
               const routerObj = {
                 name: `/${menuItem.SAYFA}/List`,
                 path: `/${menuItem.SAYFA}/List`,
-                component: () => import(`@/views/${menuItem.SAYFA}/List.vue`),
-                type: "form"
+                component: () => import(`@/views/${menuItem.SAYFA}/List.vue`)
               };
               that.$router.addRoutes([routerObj]);
             })
@@ -56,8 +57,7 @@ new Vue({
               const routerObj = {
                 name: `/${menuItem.SAYFA}/Form`,
                 path: `/${menuItem.SAYFA}/Form/:id?`,
-                component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`),
-                type: "form"
+                component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`)
               };
               that.$router.addRoutes([routerObj]);
             })

@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     hideModal() {
-      this.$store.dispatch("toolbar/changeShowModal", false);
+      this.$parent.showModal = false;
     }
   }
 };

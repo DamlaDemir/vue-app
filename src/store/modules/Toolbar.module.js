@@ -3,7 +3,7 @@ const getDefaultState = () => {
     roleMenus: [],
     toolbarItems: [],
     showModal: false,
-    formComponentPath: "/Category/Form"
+    formComponent: null
   };
 };
 
@@ -24,7 +24,7 @@ export const toolbar = {
     },
     setFormComponent(state, value) {
       debugger;
-      state.formComponentPath = value;
+      state.formComponent = () => import(`@/views${value}.vue`);
     }
   },
   actions: {
@@ -37,7 +37,7 @@ export const toolbar = {
     changeShowModal(context, value) {
       return context.commit("setShowModal", value);
     },
-    importFormComponent(context, value) {
+    changeFormComponent(context, value) {
       return context.commit("setFormComponent", value);
     }
   }
