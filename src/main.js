@@ -16,7 +16,7 @@ Vue.config.productionTip = false;
 new Vue({
   created() {
     this.getDynamicMenus();
-    this.getToolbarItems();
+    // this.getToolbarItems();
   },
   computed: {
     menus() {
@@ -41,7 +41,7 @@ new Vue({
             .then(() => {
               console.log(`${menuItem.SAYFA} liste component var`);
               const routerObj = {
-                name: `/${menuItem.SAYFA}/List`,
+                name: menuItem.SAYFA,
                 path: `/${menuItem.SAYFA}/List`,
                 component: () => import(`@/views/${menuItem.SAYFA}/List.vue`)
               };
@@ -55,7 +55,7 @@ new Vue({
             .then(() => {
               console.log(`${menuItem.SAYFA} form component var`);
               const routerObj = {
-                name: `/${menuItem.SAYFA}/Form`,
+                name: menuItem.SAYFA,
                 path: `/${menuItem.SAYFA}/Form/:id?`,
                 component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`)
               };
@@ -68,10 +68,10 @@ new Vue({
           that.createdRouterObject(menuItem.MENU);
         }
       });
-    },
-    getToolbarItems() {
-      this.$store.dispatch("toolbar/fetchToolbarItems");
     }
+    // getToolbarItems() {
+    //   this.$store.dispatch("toolbar/fetchToolbarItems");
+    // }
   },
   router,
   store,

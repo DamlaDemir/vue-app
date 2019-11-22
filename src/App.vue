@@ -15,7 +15,7 @@
           <Toolbar :toolbarItems="toolbar" />
         </div>
         <div class="routerView">
-          <b-alert :show="showAlert" variant="warning">{{alertText}}</b-alert>
+          <b-alert :show="alertShowTime" variant="warning">{{alertText}}</b-alert>
           <router-view :key="$route.fullPath" />
         </div>
       </div>
@@ -27,6 +27,7 @@ import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
 import Toolbar from "@/components/Toolbar";
 import Modal from "@/components/Modal";
+import { ToolbarItemTypeEnum } from "@/common/enums/ToolbarItemTypeEnum";
 
 export default {
   components: {
@@ -56,10 +57,9 @@ export default {
     },
     toolbar() {
       let toolbar = [];
-      if (this.menuId != undefined && Object.keys(this.roleMenus).length > 0) {
-        let t = this.roleMenus.filter(
-          x => x.MENU_ID === parseInt(this.menuId)
-        )[0];
+      let roleMenus = this.$store.state.toolbar.roleMenus;
+      if (this.menuId != undefined && Object.keys(roleMenus).length > 0) {
+        let t = roleMenus.filter(x => x.MENU_ID === parseInt(this.menuId))[0];
         if (t.MENU_AUTH.length > 0)
           toolbar = t.MENU_AUTH.sort((x, y) => x.Sequence - y.Sequence);
       }
@@ -68,18 +68,59 @@ export default {
     menuId() {
       return this.$route.query.menu_id;
     },
-    roleMenus() {
-      return this.$store.state.toolbar.roleMenus;
-    },
-    showAlert() {
-      return this.alertShowTime;
+    lastOperation() {
+      return this.$store.state.toolbar.lastOperation;
     }
   },
   methods: {
     showHideMenu() {
       this.menuShow = !this.menuShow;
+    },
+    getFormData(actionName, moduleName) {
+      debugger;
+      //düzenleme ve görüntüle sayfaları açılırken ilgili kayda göre açılması için
+      switch (this.lastOperation) {
+        case ToolbarItemTypeEnum.Edit:
+          if (this.$route.params.id !== undefined) {
+            this.$store.dispatch("toolbar/fetchFormData", {
+              actionName: actionName,
+              id: this.$route.params.id,
+              moduleName: moduleName
+            });
+            // let list = require("@/data/product.json");
+            // form.formData = list.products.filter(
+            //   x => x.id == parseInt(this.$route.params.id)
+            // )[0];
+          }
+          break;
+        case ToolbarItemTypeEnum.View:
+          if (this.selectedRows[0] !== undefined) {
+            this.$store.dispatch("toolbar/fetchFormData", {
+              actionName: actionName,
+              id: this.selectedRows[0],
+              moduleName: moduleName
+            });
+
+            // this.list = require("@/data/product.json");
+            // this.formObj = this.list.products.filter(
+            //   x => x.id == parseInt(this.$parent.selectedRows[0])
+            // )[0];
+          }
+          break;
+        case ToolbarItemTypeEnum.Add:
+          this.$store.dispatch("toolbar/resetFormState", moduleName);
+
+          // this.list = require("@/data/product.json");
+          // this.formObj = this.list.products.filter(
+          //   x => x.id == parseInt(this.$parent.selectedRows[0])
+          // )[0];
+          break;
+        default:
+          break;
+      }
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 <style lang="scss" scoped>

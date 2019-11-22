@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: "Modal",
   props: {
     title: {
       type: String,
@@ -23,12 +24,9 @@ export default {
       default: false
     }
   },
-  created() {
-    debugger;
-  },
+  created() {},
   computed: {
     showModal() {
-      debugger;
       return this.modalShow;
     }
   },

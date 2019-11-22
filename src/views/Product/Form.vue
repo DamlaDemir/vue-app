@@ -24,13 +24,14 @@
 
 <script>
 export default {
+  name: "ProductForm",
   data() {
     return {
-      formObj: {
-        name: "",
-        description: "",
-        price: null
-      },
+      // formObj: {
+      //   name: "",
+      //   description: "",
+      //   price: null
+      // },
       foods: [
         { text: "Select One", value: null },
         "Carrots",
@@ -47,25 +48,19 @@ export default {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
     },
-    getData() {
-      if (this.$route.params.id !== undefined) {
-        this.list = require("@/data/product.json");
-        this.formObj = this.list.products.filter(
-          x => x.id == parseInt(this.$route.params.id)
-        )[0];
-      }
-    },
     saveProduct() {
       console.log("added product");
     }
   },
   created() {
-    this.getData(); //Düzenleme ekranından geliniyorsa
+    debugger;
+    this.$root.$children[0].getFormData("fetchProductFormData", "product"); //Ap.vuedaki getFormDataya ulaşmak için
+
     this.$parent.saveFunction = this.saveProduct;
   },
   computed: {
     form() {
-      return this.formObj;
+      return this.$store.state.product.formData;
     }
   }
 };

@@ -10,7 +10,6 @@ export const menu = {
   getters: {},
   mutations: {
     setMenus(state, menus) {
-      debugger;
       state.menus = menus;
     }
   },

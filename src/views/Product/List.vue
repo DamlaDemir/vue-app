@@ -1,6 +1,11 @@
 <template>
-  <div>
+  <div @click="divClick">
     Product List Page
+    <router-link :to="handlePath()">Git</router-link>
+    <div v-if="show">Damla</div>
+    <b-button @click.stop="degistir1">TIKLA</b-button>
+    <b-button @click="degistir2">TIKLA2</b-button>
+
     <b-table
       selectable
       selected-variant="active"
@@ -21,7 +26,8 @@ export default {
   data() {
     return {
       list: [],
-      selectMode: "multi"
+      selectMode: "multi",
+      show: true
     };
   },
   components: {},
@@ -37,6 +43,21 @@ export default {
     },
     removeProduct() {
       console.log("product removed");
+    },
+    handlePath() {
+      console.log("handle path");
+      return "/views/Home";
+    },
+    degistir1() {
+      console.log("değiştir");
+      this.show = !this.show;
+    },
+    degistir2() {
+      console.log("değiştir2");
+    },
+    divClick() {
+      debugger;
+      console.log("div click");
     }
   }
 };

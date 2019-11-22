@@ -14,7 +14,11 @@
         <i class="fas fa-angle-down"></i>
       </span>
     </span>
-    <ul class="sub-folders" v-if="menus.MENU && menus.MENU.length > 0" v-show="showChildren">
+    <ul
+      class="sub-folders"
+      v-if="menus.MENU && menus.MENU.length > 0"
+      v-show="menus.TANIM == 'Menü' ? true : showChildren"
+    >
       <Menu v-for="menuItem in menus.MENU" :menus="menuItem" :key="menuItem.ID"></Menu>
     </ul>
     <!-- <div class="folder-empty" v-else v-show="showChildren">No Data</div> -->
@@ -23,7 +27,7 @@
 <script>
 export default {
   data() {
-    return { showChildren: true };
+    return { showChildren: false };
   },
   props: {
     menus: Object
