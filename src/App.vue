@@ -3,7 +3,7 @@
     <div class="row">
       <Modal :modalShow="showModal">
         <keep-alive>
-          <component :is="this.$store.state.toolbar.formComponent"></component>
+          <component ref="formComp" :is="this.$store.state.toolbar.formComponent"></component>
         </keep-alive>
       </Modal>
       <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
@@ -76,44 +76,30 @@ export default {
     showHideMenu() {
       this.menuShow = !this.menuShow;
     },
-    getFormData(actionName, moduleName) {
+    getFormData(name, url) {
       debugger;
+      let form;
       //düzenleme ve görüntüle sayfaları açılırken ilgili kayda göre açılması için
       switch (this.lastOperation) {
         case ToolbarItemTypeEnum.Edit:
+          form = this.$children.find(child => {
+            return child.$options.name === name;
+          });
           if (this.$route.params.id !== undefined) {
-            this.$store.dispatch("toolbar/fetchFormData", {
-              actionName: actionName,
-              id: this.$route.params.id,
-              moduleName: moduleName
-            });
-            // let list = require("@/data/product.json");
-            // form.formData = list.products.filter(
-            //   x => x.id == parseInt(this.$route.params.id)
-            // )[0];
+            let list = require(`@/data/${url}.json`); //apiden ilgili kaydın  çekilmesi
+            form.formData = list.filter(
+              x => x.id == parseInt(this.$route.params.id)
+            )[0];
           }
           break;
         case ToolbarItemTypeEnum.View:
+          form = this.$refs["formComp"];
           if (this.selectedRows[0] !== undefined) {
-            this.$store.dispatch("toolbar/fetchFormData", {
-              actionName: actionName,
-              id: this.selectedRows[0],
-              moduleName: moduleName
-            });
-
-            // this.list = require("@/data/product.json");
-            // this.formObj = this.list.products.filter(
-            //   x => x.id == parseInt(this.$parent.selectedRows[0])
-            // )[0];
+            let list = require(`@/data/${url}.json`);
+            form.formData = list.filter(
+              x => x.id == parseInt(this.selectedRows[0])
+            )[0];
           }
-          break;
-        case ToolbarItemTypeEnum.Add:
-          this.$store.dispatch("toolbar/resetFormState", moduleName);
-
-          // this.list = require("@/data/product.json");
-          // this.formObj = this.list.products.filter(
-          //   x => x.id == parseInt(this.$parent.selectedRows[0])
-          // )[0];
           break;
         default:
           break;

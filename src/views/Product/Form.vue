@@ -27,11 +27,11 @@ export default {
   name: "ProductForm",
   data() {
     return {
-      // formObj: {
-      //   name: "",
-      //   description: "",
-      //   price: null
-      // },
+      formData: {
+        name: "",
+        description: "",
+        price: null
+      },
       foods: [
         { text: "Select One", value: null },
         "Carrots",
@@ -53,15 +53,18 @@ export default {
     }
   },
   created() {
-    debugger;
-    this.$root.$children[0].getFormData("fetchProductFormData", "product"); //Ap.vuedaki getFormDataya ulaşmak için
-
+    // this.$root.$children[0].getFormData("fetchProductFormData", "product"); //Ap.vuedaki getFormDataya ulaşmak için
     this.$parent.saveFunction = this.saveProduct;
   },
   computed: {
     form() {
-      return this.$store.state.product.formData;
+      return this.formData;
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$root.$children[0].getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
+    });
   }
 };
 </script>

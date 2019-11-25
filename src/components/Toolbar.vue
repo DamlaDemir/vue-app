@@ -83,7 +83,6 @@ export default {
           }
           break;
         case ToolbarItemTypeEnum.View:
-          debugger;
           if (this.selectedRowsControl()) {
             this.$store.dispatch("toolbar/changeFormComponent", item.Path);
             this.$parent.showModal = true;

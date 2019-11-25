@@ -12,7 +12,7 @@
       sticky-header
       striped
       hover
-      :items="list.products"
+      :items="list"
       responsive="sm"
       @row-selected="onRowSelected"
       ref="selectableTable"

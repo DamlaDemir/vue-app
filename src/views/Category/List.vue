@@ -7,7 +7,7 @@
       sticky-header
       striped
       hover
-      :items="list.categories"
+      :items="list"
       responsive="sm"
       @row-selected="onRowSelected"
       ref="selectableTable"
@@ -31,7 +31,7 @@ export default {
   methods: {
     onRowSelected(items) {
       this.$parent.selectedRows = items.map(x => {
-        return x.Id;
+        return x.id;
       });
     }
   }
