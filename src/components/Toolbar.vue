@@ -94,7 +94,19 @@ export default {
           break;
         case ToolbarItemTypeEnum.Remove:
           if (this.selectedRowsControl()) {
-            this.$emit(this.$parent.removeFunction());
+            this.$parent
+              .msgBoxConfirm(
+                "Lütfen onaylayınız",
+                "Silmek istediğinize emin misiniz ?"
+              )
+              .then(res => {
+                if (res) {
+                  this.$emit(this.$parent.removeFunction());
+                }
+              })
+              .catch(err => {
+                console.log(err);
+              });
           }
           break;
         case ToolbarItemTypeEnum.Save:

@@ -1,10 +1,12 @@
 <template>
-  <div @click="divClick">
-    Product List Page
+  <div>
+    <Modal :modalShow="showModal" size="xs">Liste Sayfası Modal</Modal>
+    <router-link to="/Note/List" target="_blank">Note Page</router-link>
+    <br />
     <router-link :to="handlePath()">Git</router-link>
-    <div v-if="show">Damla</div>
-    <b-button @click.stop="degistir1">TIKLA</b-button>
-    <b-button @click="degistir2">TIKLA2</b-button>
+    <br />
+
+    <b-button @click="openModal">Modal aç</b-button>
 
     <b-table
       selectable
@@ -21,19 +23,21 @@
 </template>
 
 <script>
+import Modal from "@/components/Modal";
+
 export default {
   name: "list",
   data() {
     return {
       list: [],
       selectMode: "multi",
-      show: true
+      show: true,
+      showModal: false
     };
   },
-  components: {},
+  components: { Modal },
   created() {
     this.list = require("@/data/product.json");
-    this.$parent.removeFunction = this.removeProduct;
   },
   methods: {
     onRowSelected(items) {
@@ -43,22 +47,20 @@ export default {
     },
     removeProduct() {
       console.log("product removed");
+      console.log(this.$parent.selectedRows);
     },
     handlePath() {
       console.log("handle path");
       return "/views/Home";
     },
-    degistir1() {
-      console.log("değiştir");
-      this.show = !this.show;
-    },
-    degistir2() {
-      console.log("değiştir2");
-    },
-    divClick() {
-      debugger;
-      console.log("div click");
+    openModal() {
+      this.showModal = true;
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$parent.removeFunction = this.removeProduct;
+    });
   }
 };
 </script>

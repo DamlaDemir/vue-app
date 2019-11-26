@@ -77,7 +77,6 @@ export default {
       this.menuShow = !this.menuShow;
     },
     getFormData(name, url) {
-      debugger;
       let form;
       //düzenleme ve görüntüle sayfaları açılırken ilgili kayda göre açılması için
       switch (this.lastOperation) {
@@ -104,6 +103,30 @@ export default {
         default:
           break;
       }
+    },
+    msgBoxConfirm(title, content) {
+      debugger;
+      return new Promise((resolve, reject) => {
+        this.$bvModal
+          .msgBoxConfirm(content, {
+            title: title,
+            size: "sm",
+            buttonSize: "sm",
+            cancelVariant: "danger",
+            okVariant: "success",
+            okTitle: "Evet",
+            cancelTitle: "Hayır",
+            footerClass: "p-2",
+            hideHeaderClose: false
+            // centered: true
+          })
+          .then(value => {
+            resolve(value);
+          })
+          .catch(err => {
+            reject(err);
+          });
+      });
     }
   },
   mounted() {}

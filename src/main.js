@@ -41,7 +41,7 @@ new Vue({
             .then(() => {
               console.log(`${menuItem.SAYFA} liste component var`);
               const routerObj = {
-                name: menuItem.SAYFA,
+                name: `${menuItem.SAYFA}_List`,
                 path: `/${menuItem.SAYFA}/List`,
                 component: () => import(`@/views/${menuItem.SAYFA}/List.vue`)
               };
@@ -55,7 +55,7 @@ new Vue({
             .then(() => {
               console.log(`${menuItem.SAYFA} form component var`);
               const routerObj = {
-                name: menuItem.SAYFA,
+                name: `${menuItem.SAYFA}_Form`,
                 path: `/${menuItem.SAYFA}/Form/:id?`,
                 component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`)
               };

@@ -1,5 +1,5 @@
 <template>
-  <li class="liStyle">
+  <li class="liStyle" v-show="menus.SHOW">
     <span v-if="!menus.BASLIK">
       <router-link :to="pagePath">
         <span class="liStyle">{{ menus.TANIM }}</span>
@@ -19,7 +19,11 @@
       v-if="menus.MENU && menus.MENU.length > 0"
       v-show="menus.TANIM == 'Menü' ? true : showChildren"
     >
-      <Menu v-for="menuItem in menus.MENU" :menus="menuItem" :key="menuItem.ID"></Menu>
+      <Menu
+        v-for="menuItem in menus.MENU.slice().sort((x, y) => x.SIRA_NO - y.SIRA_NO)"
+        :menus="menuItem"
+        :key="menuItem.ID"
+      ></Menu>
     </ul>
     <!-- <div class="folder-empty" v-else v-show="showChildren">No Data</div> -->
   </li>

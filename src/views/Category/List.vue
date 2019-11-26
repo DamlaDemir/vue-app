@@ -27,14 +27,19 @@ export default {
   components: {},
   created() {
     this.list = require("@/data/category.json");
+    this.$parent.removeFunction = this.removeCategory;
   },
   methods: {
     onRowSelected(items) {
       this.$parent.selectedRows = items.map(x => {
         return x.id;
       });
+    },
+    removeCategory() {
+      console.log("category removed");
     }
-  }
+  },
+  mounted() {}
 };
 </script>
 

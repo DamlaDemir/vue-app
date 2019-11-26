@@ -7,6 +7,7 @@
   "BASLIK": true,
   "SILINDI": 0,
   "ICON": "fas fa-ellipsis-v",
+  "SHOW": true,
   "MENU": [
     {
       "ID": 2,
@@ -17,6 +18,7 @@
       "BASLIK": true,
       "SILINDI": 0,
       "ICON": "fas fa-book-open",
+      "SHOW": true,
       "MENU": [
         {
           "ID": 3,
@@ -27,6 +29,7 @@
           "BASLIK": true,
           "SILINDI": 0,
           "ICON": "fas fa-book-open",
+          "SHOW": true,
           "MENU": [
             {
               "ID": 4,
@@ -36,7 +39,8 @@
               "SIRA_NO": 1,
               "BASLIK": false,
               "SILINDI": 0,
-              "ICON": "fas fa-book-open"
+              "ICON": "fas fa-book-open",
+              "SHOW": true
             }
           ]
         },
@@ -45,11 +49,12 @@
           "AKTIF": 1,
           "TANIM": "Category",
           "SAYFA": "Category",
-          "SIRA_NO": 1,
+          "SIRA_NO": 2,
           "BASLIK": false,
           "SILINDI": 0,
           "MENU": null,
-          "ICON": "fas fa-book-open"
+          "ICON": "fas fa-book-open",
+          "SHOW": true
         }
       ]
     },
@@ -62,6 +67,7 @@
       "BASLIK": true,
       "SILINDI": 0,
       "ICON": "fas fa-book-open",
+      "SHOW": true,
       "MENU": [
         {
           "ID": 7,
@@ -72,7 +78,8 @@
           "BASLIK": false,
           "SILINDI": 0,
           "MENU": null,
-          "ICON": "fas fa-book-open"
+          "ICON": "fas fa-book-open",
+          "SHOW": true
         }
       ]
     },
@@ -81,10 +88,11 @@
       "AKTIF": 1,
       "TANIM": "Settings",
       "SAYFA": null,
-      "SIRA_NO": 2,
+      "SIRA_NO": 3,
       "BASLIK": true,
       "SILINDI": 0,
       "ICON": "fas fa-book-open",
+      "SHOW": true,
       "MENU": [
         {
           "ID": 9,
@@ -95,9 +103,22 @@
           "BASLIK": false,
           "SILINDI": 0,
           "MENU": null,
-          "ICON": "fas fa-book-open"
+          "ICON": "fas fa-book-open",
+          "SHOW": true
         }
       ]
+    },
+    {
+      "ID": 9,
+      "AKTIF": 1,
+      "TANIM": "",
+      "SAYFA": "Note",
+      "SIRA_NO": null,
+      "BASLIK": false,
+      "SILINDI": 0,
+      "ICON": "",
+      "SHOW": true,
+      "MENU": []
     }
   ]
 }
