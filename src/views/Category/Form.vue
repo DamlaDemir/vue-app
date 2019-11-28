@@ -27,12 +27,12 @@ export default {
       alert(JSON.stringify(this.form));
     },
     saveCategory() {
+      this.$parent.showToast("success", "Başarılı", "Kaydetme işlemi başarılı");
       console.log("added category");
     }
   },
   created() {
     // this.$root.$children[0].getFormData("fetchProductFormData", "product"); //Ap.vuedaki getFormDataya ulaşmak için
-    this.$parent.saveFunction = this.saveCategory;
   },
   computed: {
     form() {
@@ -42,10 +42,10 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.$root.$children[0].getFormData(this.$options.name, "category"); //Ap.vuedaki getFormDataya ulaşmak için
+      this.$parent.saveFunction = this.saveCategory;
     });
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

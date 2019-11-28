@@ -6,16 +6,28 @@
           <b-form-input id="name" v-model="form.name" required></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Description" label-for="description">
-          <b-form-input id="description" v-model="form.description" required></b-form-input>
+        <b-form-group
+          id="input-group-2"
+          label="Description"
+          label-for="description"
+        >
+          <b-form-input
+            id="description"
+            v-model="form.description"
+            required
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Price" label-for="price">
           <b-form-input id="price" v-model="form.price" required></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-3" label="Category:" label-for="category">
-          <b-form-select id="category" v-model="form.food" :options="foods" required></b-form-select>
+        <b-form-group id="input-group-1" label="Category Name" label-for="name">
+          <Choices
+            :options="categories"
+            v-on:input="form.category = $event"
+            v-bind:value="form.category"
+          />
         </b-form-group>
       </b-form>
     </b-card>
@@ -23,6 +35,7 @@
 </template>
 
 <script>
+import Choices from "@/components/Choices.vue";
 export default {
   name: "ProductForm",
   data() {
@@ -30,19 +43,15 @@ export default {
       formData: {
         name: "",
         description: "",
-        price: null
+        price: null,
+        category: []
       },
-      foods: [
-        { text: "Select One", value: null },
-        "Carrots",
-        "Beans",
-        "Tomatoes",
-        "Corn"
-      ],
+      categories: [],
       show: true,
       list: []
     };
   },
+  components: { Choices },
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
@@ -54,7 +63,7 @@ export default {
   },
   created() {
     // this.$root.$children[0].getFormData("fetchProductFormData", "product"); //Ap.vuedaki getFormDataya ulaşmak için
-    this.$parent.saveFunction = this.saveProduct;
+    this.categories = require("@/data/category.json"); //cacheden çekilecek
   },
   computed: {
     form() {
@@ -64,10 +73,10 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.$root.$children[0].getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
+      this.$parent.saveFunction = this.saveProduct;
     });
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

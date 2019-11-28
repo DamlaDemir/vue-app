@@ -3,10 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
-import AsyncComputed from "vue-async-computed";
 
 Vue.use(BootstrapVue);
-Vue.use(AsyncComputed);
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

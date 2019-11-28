@@ -3,19 +3,34 @@
     <div class="row">
       <Modal :modalShow="showModal">
         <keep-alive>
-          <component ref="formComp" :is="this.$store.state.toolbar.formComponent"></component>
+          <component
+            ref="formComp"
+            :is="this.$store.state.toolbar.formComponent"
+          ></component>
         </keep-alive>
       </Modal>
-      <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
+      <div
+        id="menu"
+        class="col-md-2 col-lg-2 bg-dark menuStyle pt-3"
+        v-show="menuShow"
+      >
         <Menu :menus="menus"></Menu>
       </div>
-      <div :class="menuShow ? 'col-md-10 col-lg-10 ml-0 pl-0' : 'col-md-12 col-lg-12 ml-0 pl-0'">
+      <div
+        :class="
+          menuShow
+            ? 'col-md-10 col-lg-10 ml-0 pl-0'
+            : 'col-md-12 col-lg-12 ml-0 pl-0'
+        "
+      >
         <navbar />
         <div class="toolbar mt-2">
           <Toolbar :toolbarItems="toolbar" />
         </div>
         <div class="routerView">
-          <b-alert :show="alertShowTime" variant="warning">{{alertText}}</b-alert>
+          <b-alert :show="alertShowTime" variant="warning">{{
+            alertText
+          }}</b-alert>
           <router-view :key="$route.fullPath" />
         </div>
       </div>
@@ -72,6 +87,12 @@ export default {
       return this.$store.state.toolbar.lastOperation;
     }
   },
+  watch: {
+    $route() {
+      debugger;
+      console.log(this.$children);
+    }
+  },
   methods: {
     showHideMenu() {
       this.menuShow = !this.menuShow;
@@ -105,7 +126,6 @@ export default {
       }
     },
     msgBoxConfirm(title, content) {
-      debugger;
       return new Promise((resolve, reject) => {
         this.$bvModal
           .msgBoxConfirm(content, {
@@ -127,9 +147,20 @@ export default {
             reject(err);
           });
       });
+    },
+    showToast(type, title, body, append = false) {
+      this.$bvToast.toast(body, {
+        title: title,
+        toaster: "b-toaster-bottom-right",
+        solid: true,
+        appendToast: append,
+        variant: type
+      });
     }
   },
-  mounted() {}
+  mounted() {
+    debugger;
+  }
 };
 </script>
 <style lang="scss" scoped>
