@@ -7,24 +7,38 @@
     multiple
   >
     <option placeholder>Seçim yapınız</option>
-    <option v-for="option in options" :value="option.id" :key="option.id">{{
+    <option v-for="option in options" :value="option.id" :key="option.id">
+      {{
       option.name
-    }}</option>
+      }}
+    </option>
   </select>
 </template>
 
 <script>
 import Choices from "choices.js";
-
+var choicesSelect;
 export default {
   props: {
     options: { Type: Array, default: [] },
-    maxItem: { Type: Number, default: null }
+    maxItem: { Type: Number, default: null },
+    value: { Type: Array, default: () => [] }
+  },
+  watch: {
+    value() {
+      //sayfa ilk açıldığında choices'in dbden gelen değeri varsa dolmasını sağlar
+      if (this.value.length > 0) {
+        this.value.forEach(element => {
+          choicesSelect.setChoiceByValue(`${element}`);
+        });
+      }
+    }
   },
   mounted() {
+    debugger;
     var that = this;
     this.$nextTick(() => {
-      var choicesSelect = new Choices("#choices-multiple-default", {
+      choicesSelect = new Choices("#choices-multiple-default", {
         allowSearch: true,
         removeItemButton: true,
         //   duplicateItemsAllowed: true ,// seçeneklerde 2 tane aynı değer varsa ikisinide seçebilir mi

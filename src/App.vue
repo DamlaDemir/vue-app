@@ -3,17 +3,10 @@
     <div class="row">
       <Modal :modalShow="showModal">
         <keep-alive>
-          <component
-            ref="formComp"
-            :is="this.$store.state.toolbar.formComponent"
-          ></component>
+          <component ref="formComp" :is="this.$store.state.toolbar.formComponent"></component>
         </keep-alive>
       </Modal>
-      <div
-        id="menu"
-        class="col-md-2 col-lg-2 bg-dark menuStyle pt-3"
-        v-show="menuShow"
-      >
+      <div id="menu" class="col-md-2 col-lg-2 bg-dark menuStyle pt-3" v-show="menuShow">
         <Menu :menus="menus"></Menu>
       </div>
       <div
@@ -28,9 +21,11 @@
           <Toolbar :toolbarItems="toolbar" />
         </div>
         <div class="routerView">
-          <b-alert :show="alertShowTime" variant="warning">{{
+          <b-alert :show="alertShowTime" variant="warning">
+            {{
             alertText
-          }}</b-alert>
+            }}
+          </b-alert>
           <router-view :key="$route.fullPath" />
         </div>
       </div>
@@ -87,21 +82,18 @@ export default {
       return this.$store.state.toolbar.lastOperation;
     }
   },
-  watch: {
-    $route() {
-      debugger;
-      console.log(this.$children);
-    }
-  },
+  watch: {},
   methods: {
     showHideMenu() {
       this.menuShow = !this.menuShow;
     },
     getFormData(name, url) {
+      debugger;
       let form;
       //düzenleme ve görüntüle sayfaları açılırken ilgili kayda göre açılması için
       switch (this.lastOperation) {
         case ToolbarItemTypeEnum.Edit:
+        case null:
           form = this.$children.find(child => {
             return child.$options.name === name;
           });

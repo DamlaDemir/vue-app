@@ -6,16 +6,8 @@
           <b-form-input id="name" v-model="form.name" required></b-form-input>
         </b-form-group>
 
-        <b-form-group
-          id="input-group-2"
-          label="Description"
-          label-for="description"
-        >
-          <b-form-input
-            id="description"
-            v-model="form.description"
-            required
-          ></b-form-input>
+        <b-form-group id="input-group-2" label="Description" label-for="description">
+          <b-form-input id="description" v-model="form.description" required></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Price" label-for="price">
@@ -25,8 +17,8 @@
         <b-form-group id="input-group-1" label="Category Name" label-for="name">
           <Choices
             :options="categories"
-            v-on:input="form.category = $event"
-            v-bind:value="form.category"
+            v-on:input="form.categories = $event"
+            v-bind:value="form.categories"
           />
         </b-form-group>
       </b-form>
@@ -44,7 +36,7 @@ export default {
         name: "",
         description: "",
         price: null,
-        category: []
+        categories: []
       },
       categories: [],
       show: true,
@@ -71,9 +63,11 @@ export default {
     }
   },
   mounted() {
+    var that = this;
     this.$nextTick(() => {
       this.$root.$children[0].getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
       this.$parent.saveFunction = this.saveProduct;
+      console.log(that.formData);
     });
   }
 };
