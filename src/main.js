@@ -33,7 +33,7 @@ new Vue({
     },
     createdRouterObject(menu) {
       var that = this;
-      menu.forEach(function(menuItem) {
+      menu.forEach(function (menuItem) {
         if (!menuItem.BASLIK) {
           import(`@/views/${menuItem.SAYFA}/List.vue`)
             .then(() => {

@@ -6,6 +6,9 @@ Vue.use(VueRouter);
 const routes = [{
   path: `/`,
   component: () => import('@/views/Home/Index.vue')
+}, {
+  path: `/Login`,
+  component: () => import('@/views/Login/Index.vue')
 }]
 const router = new VueRouter({
   mode: 'history',
@@ -14,8 +17,8 @@ const router = new VueRouter({
 })
 
 router.afterEach(() => {
-console.log("url değişti")
-console.log(router.currentRoute.query)
+  console.log("url değişti")
+  console.log(router.currentRoute.query)
 });
 
 export default router;
