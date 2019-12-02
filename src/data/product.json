@@ -11,34 +11,99 @@
     "name": "Product2",
     "price": 70,
     "description": "Product2 Description",
-    "categories": [1]
+    "categories": [
+      1
+    ]
   },
   {
     "id": 3,
     "name": "Product3",
     "price": 80,
     "description": "Product3 Description",
-    "categories": [1, 2, 3]
+    "categories": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 4,
     "name": "Product4",
     "price": 90,
     "description": "Product4 Description",
-    "categories": [1, 2]
+    "categories": [
+      1,
+      2
+    ]
   },
   {
     "id": 5,
     "name": "Product5",
     "price": 90,
     "description": "Product5 Description",
-    "categories": [1, 2, 3]
+    "categories": [
+      1,
+      2,
+      3
+    ]
   },
   {
     "id": 6,
     "name": "Product6",
     "price": 90,
     "description": "Product6 Description",
-    "categories": [1, 2]
+    "categories": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Product7",
+    "price": 90,
+    "description": "Product7 Description",
+    "categories": [
+      1
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Product8",
+    "price": 90,
+    "description": "Product8 Description",
+    "categories": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Product9",
+    "price": 90,
+    "description": "Product9 Description",
+    "categories": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Product10",
+    "price": 90,
+    "description": "Product10 Description",
+    "categories": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Product11",
+    "price": 90,
+    "description": "Product11 Description",
+    "categories": [
+      1,
+      2
+    ]
   }
 ]

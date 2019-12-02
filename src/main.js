@@ -3,13 +3,17 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import BootstrapVue from "bootstrap-vue";
+import DefaultLayout from "./components/layout/DefaultLayout";
+import SimpleLayout from "./components/layout/SimpleLayout";
 
-Vue.use(BootstrapVue);
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
+Vue.component("defaultLayout", DefaultLayout);
+Vue.component("simpleLayout", SimpleLayout);
 
 new Vue({
   created() {
@@ -27,11 +31,12 @@ new Vue({
         .dispatch("menu/fetchMenus")
         .then(() => {
           this.createdRouterObject(this.menus.MENU);
-          this.$store.dispatch("toolbar/fetchRoleMenus");
+          this.$store.dispatch("toolbar/fetchRoleMenus");//kullanıcının menülerdeki okuma,yazma,silme yetkilerinin store'a kaydedilmesi
         })
         .catch(err => console.log(err));
     },
     createdRouterObject(menu) {
+      //apiden gelen menülerin router ayarlarının yapılması
       var that = this;
       menu.forEach(function (menuItem) {
         if (!menuItem.BASLIK) {
@@ -41,6 +46,7 @@ new Vue({
               const routerObj = {
                 name: `${menuItem.SAYFA}_List`,
                 path: `/${menuItem.SAYFA}/List`,
+                meta: { layout: menuItem.LAYOUT },
                 component: () => import(`@/views/${menuItem.SAYFA}/List.vue`)
               };
               that.$router.addRoutes([routerObj]);
@@ -55,6 +61,7 @@ new Vue({
               const routerObj = {
                 name: `${menuItem.SAYFA}_Form`,
                 path: `/${menuItem.SAYFA}/Form/:id?`,
+                meta: { layout: menuItem.LAYOUT },
                 component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`)
               };
               that.$router.addRoutes([routerObj]);

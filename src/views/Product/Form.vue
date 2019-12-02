@@ -63,11 +63,14 @@ export default {
     }
   },
   mounted() {
-    var that = this;
     this.$nextTick(() => {
-      this.$root.$children[0].getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
+      debugger;
+      let parent = this.$root.$children[0].$children.find(child => {
+        return child.$options.name === "DefaultLayout";
+      });
+      parent.getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
+
       this.$parent.saveFunction = this.saveProduct;
-      console.log(that.formData);
     });
   }
 };

@@ -40,7 +40,8 @@
               "BASLIK": false,
               "SILINDI": 0,
               "ICON": "fas fa-book-open",
-              "SHOW": true
+              "SHOW": true,
+              "LAYOUT": "default"
             }
           ]
         },
@@ -54,7 +55,8 @@
           "SILINDI": 0,
           "MENU": null,
           "ICON": "fas fa-book-open",
-          "SHOW": true
+          "SHOW": true,
+          "LAYOUT": "default"
         }
       ]
     },
@@ -79,7 +81,8 @@
           "SILINDI": 0,
           "MENU": null,
           "ICON": "fas fa-book-open",
-          "SHOW": true
+          "SHOW": true,
+          "LAYOUT": "default"
         }
       ]
     },
@@ -104,7 +107,8 @@
           "SILINDI": 0,
           "MENU": null,
           "ICON": "fas fa-book-open",
-          "SHOW": true
+          "SHOW": true,
+          "LAYOUT": "default"
         }
       ]
     },
@@ -117,8 +121,9 @@
       "BASLIK": false,
       "SILINDI": 0,
       "ICON": "",
-      "SHOW": true,
-      "MENU": []
+      "SHOW": false,
+      "MENU": [],
+      "LAYOUT": "default"
     }
   ]
 }

@@ -16,6 +16,8 @@
 
 <script>
 import { ToolbarItemTypeEnum } from "@/common/enums/ToolbarItemTypeEnum";
+import InfoHelper from "@/components/infoComponents/InfoHelper";
+
 export default {
   name: "Toolbar",
   data() {
@@ -94,11 +96,11 @@ export default {
           break;
         case ToolbarItemTypeEnum.Remove:
           if (this.selectedRowsControl()) {
-            this.$parent
-              .msgBoxConfirm(
-                "Lütfen onaylayınız",
-                "Silmek istediğinize emin misiniz ?"
-              )
+            InfoHelper.msgBoxConfirm(
+              this,
+              "Lütfen onaylayınız",
+              "Silmek istediğinize emin misiniz ?"
+            )
               .then(res => {
                 if (res) {
                   this.$emit(this.$parent.removeFunction());

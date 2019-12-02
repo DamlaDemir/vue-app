@@ -5,10 +5,12 @@ Vue.use(VueRouter);
 
 const routes = [{
   path: `/`,
-  component: () => import('@/views/Home/Index.vue')
+  component: () => import('@/views/Home/Index.vue'),
+  meta: { layout: "default" }
 }, {
   path: `/Login`,
-  component: () => import('@/views/Login/Index.vue')
+  component: () => import('@/views/Login/Index.vue'),
+  meta: { layout: "simple" }
 }]
 const router = new VueRouter({
   mode: 'history',

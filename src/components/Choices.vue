@@ -26,7 +26,7 @@ export default {
   },
   watch: {
     value() {
-      //sayfa ilk açıldığında choices'in dbden gelen değeri varsa dolmasını sağlar
+      //sayfa ilk açıldığında choices'in dbden gelen değeri varsa dolmasını sağlar(setChoiceByValue ile gelen değerler set edilir)
       if (this.value.length > 0) {
         this.value.forEach(element => {
           choicesSelect.setChoiceByValue(`${element}`);
@@ -35,7 +35,6 @@ export default {
     }
   },
   mounted() {
-    debugger;
     var that = this;
     this.$nextTick(() => {
       choicesSelect = new Choices("#choices-multiple-default", {
@@ -63,7 +62,7 @@ export default {
       choicesSelect.passedElement.element.addEventListener(
         "removeItem",
         function() {
-          //seçilen veri slindiğinde çalışır
+          //her seçilen veri slindiğinde çalışır
           console.log(choicesSelect.getValue(true));
           that.$emit("input", choicesSelect.getValue(true));
           // console.log(event.detail.value);
