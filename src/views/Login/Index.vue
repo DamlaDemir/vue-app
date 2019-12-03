@@ -27,7 +27,7 @@
               <input
                 type="text"
                 class="form-control"
-                v-model="form.username"
+                v-model="username"
                 placeholder="username"
               />
             </div>
@@ -40,7 +40,7 @@
               <input
                 type="password"
                 class="form-control"
-                v-model="form.password"
+                v-model="password"
                 placeholder="password"
               />
             </div>
@@ -48,7 +48,12 @@
               <input type="checkbox" />Remember Me
             </div>
             <div class="form-group">
-              <input type="submit" value="Login" class="btn float-right login_btn" />
+              <input
+                type="submit"
+                value="Login"
+                class="btn float-right login_btn"
+                @click="handleSubmit"
+              />
             </div>
           </form>
         </div>
@@ -93,14 +98,32 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
+  name: "login",
   data() {
     return {
-      form: {
-        username: "",
-        password: ""
-      }
+      username: "",
+      password: ""
     };
+  },
+  computed: {
+    ...mapGetters("auth", [
+      "authenticating",
+      "authenticationError",
+      "authenticationErrorCode"
+    ])
+  },
+  methods: {
+    ...mapActions("auth", ["login"]), //auth modülündeki login actions maplenir
+    handleSubmit() {
+      // Perform a simple validation that email and password have been typed in
+      if (this.username != "" && this.password != "") {
+        this.login({ username: this.username, password: this.password });
+        this.password = "";
+      }
+    }
   }
 };
 </script>

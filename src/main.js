@@ -5,6 +5,9 @@ import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 import DefaultLayout from "./components/layout/DefaultLayout";
 import SimpleLayout from "./components/layout/SimpleLayout";
+import ApiService from "@/services/api.service";
+import Constant from "@/common/Constant";
+import { TokenService } from "@/services/storage.service";
 
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -17,6 +20,11 @@ Vue.component("simpleLayout", SimpleLayout);
 
 new Vue({
   created() {
+    ApiService.init(Constant.Base_Url);
+    if (TokenService.getToken()) {
+      //Token varsa istek url'sinin header'ına ekle
+      ApiService.setHeader();
+    }
     this.getDynamicMenus();
     // this.getToolbarItems();
   },
@@ -31,14 +39,14 @@ new Vue({
         .dispatch("menu/fetchMenus")
         .then(() => {
           this.createdRouterObject(this.menus.MENU);
-          this.$store.dispatch("toolbar/fetchRoleMenus");//kullanıcının menülerdeki okuma,yazma,silme yetkilerinin store'a kaydedilmesi
+          this.$store.dispatch("toolbar/fetchRoleMenus"); //kullanıcının menülerdeki okuma,yazma,silme yetkilerinin store'a kaydedilmesi
         })
         .catch(err => console.log(err));
     },
     createdRouterObject(menu) {
       //apiden gelen menülerin router ayarlarının yapılması
       var that = this;
-      menu.forEach(function (menuItem) {
+      menu.forEach(function(menuItem) {
         if (!menuItem.BASLIK) {
           import(`@/views/${menuItem.SAYFA}/List.vue`)
             .then(() => {
@@ -46,7 +54,7 @@ new Vue({
               const routerObj = {
                 name: `${menuItem.SAYFA}_List`,
                 path: `/${menuItem.SAYFA}/List`,
-                meta: { layout: menuItem.LAYOUT },
+                meta: { layout: menuItem.LAYOUT, public: false },
                 component: () => import(`@/views/${menuItem.SAYFA}/List.vue`)
               };
               that.$router.addRoutes([routerObj]);
@@ -61,7 +69,7 @@ new Vue({
               const routerObj = {
                 name: `${menuItem.SAYFA}_Form`,
                 path: `/${menuItem.SAYFA}/Form/:id?`,
-                meta: { layout: menuItem.LAYOUT },
+                meta: { layout: menuItem.LAYOUT, public: false },
                 component: () => import(`@/views/${menuItem.SAYFA}/Form.vue`)
               };
               that.$router.addRoutes([routerObj]);

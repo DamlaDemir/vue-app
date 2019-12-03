@@ -65,10 +65,11 @@ export default {
   mounted() {
     this.$nextTick(() => {
       debugger;
+      //App.vue nun içindeki DefaultLayoutu bulmak için
       let parent = this.$root.$children[0].$children.find(child => {
         return child.$options.name === "DefaultLayout";
       });
-      parent.getFormData(this.$options.name, "product"); //Ap.vuedaki getFormDataya ulaşmak için
+      parent.getFormData(this.$options.name, "product"); //DefaultLayout.vue daki getFormDataya ulaşmak için
 
       this.$parent.saveFunction = this.saveProduct;
     });

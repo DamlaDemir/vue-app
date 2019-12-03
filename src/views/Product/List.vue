@@ -19,11 +19,26 @@
       @row-selected="onRowSelected"
       ref="selectableTable"
     ></b-table>
+
+    <b-table
+      selectable
+      selected-variant="active"
+      sticky-header
+      striped
+      hover
+      :items="permitList"
+      responsive="sm"
+      @row-selected="onRowSelected"
+      ref="selectableTable"
+    ></b-table>
   </div>
 </template>
 
 <script>
 import Modal from "@/components/Modal";
+import ApiService from "@/services/api.service";
+import Constant from "@/common/Constant";
+
 export default {
   name: "list",
   data() {
@@ -31,12 +46,19 @@ export default {
       list: [],
       selectMode: "multi",
       show: true,
-      showModal: false
+      showModal: false,
+      permitList: []
     };
   },
   components: { Modal },
   created() {
+    debugger;
+
     this.list = require("@/data/product.json");
+    ApiService.get(`${Constant.Base_Url}/api/Values/GetUsers`).then(res => {
+      debugger;
+      this.permitList = res.data;
+    });
   },
   methods: {
     onRowSelected(items) {
@@ -64,5 +86,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>
