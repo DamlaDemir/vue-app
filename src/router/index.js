@@ -41,8 +41,8 @@ router.beforeEach((to, from, next) => {
 
   if (!isPublic && !loggedIn) {
     return next({
-      path: "/login",
-      query: { redirect: to.fullPath } // Giriş yaptıktan sonra kullanıcıyı yönlendirmek için tam yolun saklanması
+      path: "/login"
+      // query: { redirect: to.fullPath } // Giriş yaptıktan sonra kullanıcıyı yönlendirmek için tam yolun saklanması
     });
   }
 

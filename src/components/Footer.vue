@@ -3,7 +3,7 @@
     <small>
       <strong>
         <a href="http://www.cts.com.tr" target="_blank">CTS Yazılım Bilgi ve İletişim Teknolojileri</a>
-      </strong> - Tüm hakları saklıdır. &copy; @DateTime.Now.Year
+      </strong> - Tüm hakları saklıdır. &copy;
     </small>
   </div>
 </template>

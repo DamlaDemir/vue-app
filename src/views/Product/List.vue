@@ -52,8 +52,6 @@ export default {
   },
   components: { Modal },
   created() {
-    debugger;
-
     this.list = require("@/data/product.json");
     ApiService.get(`${Constant.Base_Url}/api/Values/GetUsers`).then(res => {
       debugger;

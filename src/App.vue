@@ -24,7 +24,13 @@ export default {
   mounted() {}
 };
 </script>
-<style lang="scss" scoped>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Numans");
+html,
+body {
+  height: 100%;
+  font-family: "Numans", sans-serif !important;
+}
 .routerView {
   padding-top: 3%;
   padding-left: 5%;

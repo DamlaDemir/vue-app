@@ -45,7 +45,7 @@ const UserService = {
       TokenService.saveRefreshToken(response.data.refresh_token);
       ApiService.setHeader();
 
-      ApiService.mount401Interceptor();
+      // ApiService.mount401Interceptor();
       return response.data.access_token;
     } catch (error) {
       throw new AuthenticationError(
@@ -59,14 +59,19 @@ const UserService = {
    * Refresh the access token.
    **/
   refreshToken: async function() {
+    debugger;
+    ApiService.removeHeader();
     const refreshToken = TokenService.getRefreshToken();
 
     const requestData = {
       method: "post",
       url: `${Constant.Base_Url}/token`,
-      data: {
+      data: qs.stringify({
         grant_type: "refresh_token",
         refresh_token: refreshToken
+      }),
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
       }
       //   ,
       //   auth: {
@@ -77,13 +82,17 @@ const UserService = {
 
     try {
       const response = await ApiService.customRequest(requestData);
+      debugger;
+      if (response == undefined) {
+        throw new AuthenticationError("", "refresh token süresi dolmuş");
+      } else {
+        TokenService.saveToken(response.data.access_token);
+        TokenService.saveRefreshToken(response.data.refresh_token);
+        // Update the header in ApiService
+        ApiService.setHeader();
 
-      TokenService.saveToken(response.data.access_token);
-      TokenService.saveRefreshToken(response.data.refresh_token);
-      // Update the header in ApiService
-      ApiService.setHeader();
-
-      return response.data.access_token;
+        return response.data.access_token;
+      }
     } catch (error) {
       throw new AuthenticationError(
         error.response.status,
@@ -104,7 +113,7 @@ const UserService = {
     ApiService.removeHeader();
 
     // NOTE: Again, we'll cover the 401 Interceptor a bit later.
-    ApiService.unmount401Interceptor();
+    // ApiService.unmount401Interceptor();
   }
 };
 

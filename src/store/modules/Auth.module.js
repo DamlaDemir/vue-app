@@ -62,11 +62,7 @@ export const auth = {
       commit("loginRequest");
       try {
         const token = await UserService.login(username, password);
-        console.log("Token");
-        console.log(token);
         commit("loginSuccess", token);
-        debugger;
-
         // Redirect the user to the page he first tried to visit or to the home view
         // router.push(router.history.current.query.redirect || "/");
         router.push("/");
@@ -90,6 +86,7 @@ export const auth = {
       router.push("/login");
     },
     refreshToken({ commit, state }) {
+      debugger;
       // If this is the first time the refreshToken has been called, make a request
       // otherwise return the same promise to the caller
       if (!state.refreshTokenPromise) {
@@ -104,6 +101,7 @@ export const auth = {
             commit("loginSuccess", response);
           },
           error => {
+            debugger;
             console.log(error);
             commit("refreshTokenPromise", null);
           }

@@ -160,15 +160,11 @@ export default {
   mounted() {}
 };
 </script>
-<style lang="scss" scoped>
+<style  scoped>
 .menuStyle {
   height: 100vh;
 }
 .toolbar {
   padding-left: 50%;
-}
-.routerView {
-  padding-top: 3%;
-  padding-left: 5%;
 }
 </style>

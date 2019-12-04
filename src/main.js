@@ -8,7 +8,7 @@ import SimpleLayout from "./components/layout/SimpleLayout";
 import ApiService from "@/services/api.service";
 import Constant from "@/common/Constant";
 import { TokenService } from "@/services/storage.service";
-
+import "@/services/auth_interceptors";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

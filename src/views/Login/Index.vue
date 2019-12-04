@@ -24,12 +24,7 @@
                   <i class="fas fa-user"></i>
                 </span>
               </div>
-              <input
-                type="text"
-                class="form-control"
-                v-model="username"
-                placeholder="username"
-              />
+              <input type="text" class="form-control" v-model="username" placeholder="username" />
             </div>
             <div class="input-group form-group">
               <div class="input-group-prepend">
@@ -37,19 +32,14 @@
                   <i class="fas fa-key"></i>
                 </span>
               </div>
-              <input
-                type="password"
-                class="form-control"
-                v-model="password"
-                placeholder="password"
-              />
+              <input type="password" class="form-control" v-model="password" placeholder="password" />
             </div>
             <div class="row align-items-center remember">
               <input type="checkbox" />Remember Me
             </div>
             <div class="form-group">
               <input
-                type="submit"
+                type="button"
                 value="Login"
                 class="btn float-right login_btn"
                 @click="handleSubmit"
@@ -133,9 +123,9 @@ export default {
 
 html,
 body {
-  background-image: url("http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg") !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
   height: 100%;
   font-family: "Numans", sans-serif;
 }
