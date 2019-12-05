@@ -89,6 +89,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import InfoHelper from "@/components/infoComponents/InfoHelper";
 
 export default {
   name: "login",
@@ -108,9 +109,15 @@ export default {
   methods: {
     ...mapActions("auth", ["login"]), //auth modülündeki login actions maplenir
     handleSubmit() {
-      // Perform a simple validation that email and password have been typed in
       if (this.username != "" && this.password != "") {
-        this.login({ username: this.username, password: this.password });
+        this.login({ username: this.username, password: this.password })
+          .then(res => {
+            console.log(res);
+          })
+          .catch(err => {
+            InfoHelper.showToast(this, "danger", "Hata", err.message);
+            debugger;
+          });
         this.password = "";
       }
     }

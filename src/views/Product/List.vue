@@ -53,10 +53,17 @@ export default {
   components: { Modal },
   created() {
     this.list = require("@/data/product.json");
-    ApiService.get(`${Constant.Base_Url}/api/Values/GetUsers`).then(res => {
-      debugger;
-      this.permitList = res.data;
-    });
+    ApiService.get(`${Constant.Base_Url}/api/Values/GetUsers`)
+      .then(res => {
+        debugger;
+        this.permitList = res.data;
+        console.log("List then");
+      })
+      .catch(error => {
+        debugger;
+        console.log(error);
+        console.log("List catch");
+      });
   },
   methods: {
     onRowSelected(items) {

@@ -10,18 +10,19 @@ axios.interceptors.response.use(
     return response;
   },
   async error => {
+    debugger;
+
     if (error.request.status == 401) {
       debugger;
-      //refresh token alınırken 401 hatası gelirse lagout işlemi yapılır
       if (error.config.url.includes(`${Constant.Base_Url}/token`)) {
-        // Refresh token has failed. Logout the user
         store.dispatch("auth/logout");
       } else {
-        // Refresh the access token
         try {
           debugger;
           await store.dispatch("auth/refreshToken");
           // Retry the original request
+          debugger;
+
           return ApiService.customRequest({
             method: error.config.method,
             url: error.config.url,

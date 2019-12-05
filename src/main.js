@@ -8,7 +8,7 @@ import SimpleLayout from "./components/layout/SimpleLayout";
 import ApiService from "@/services/api.service";
 import Constant from "@/common/Constant";
 import { TokenService } from "@/services/storage.service";
-import "@/services/auth_interceptors";
+import "@/services/auth_interceptors"; // apiden dönen isteklerde 401 kontrolü için 
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -46,7 +46,7 @@ new Vue({
     createdRouterObject(menu) {
       //apiden gelen menülerin router ayarlarının yapılması
       var that = this;
-      menu.forEach(function(menuItem) {
+      menu.forEach(function (menuItem) {
         if (!menuItem.BASLIK) {
           import(`@/views/${menuItem.SAYFA}/List.vue`)
             .then(() => {

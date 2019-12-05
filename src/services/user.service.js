@@ -13,13 +13,7 @@ class AuthenticationError extends Error {
 }
 
 const UserService = {
-  /**
-   * Login the user and store the access token to TokenService.
-   *
-   * @returns access_token
-   * @throws AuthenticationError
-   **/
-  login: async function(username, password) {
+  login: async function (username, password) {
     debugger;
     const requestData = {
       method: "POST",
@@ -32,11 +26,6 @@ const UserService = {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
       }
-      //   ,
-      //   auth: {
-      //     username: process.env.VUE_APP_CLIENT_ID,
-      //     password: process.env.VUE_APP_CLIENT_SECRET
-      //   }
     };
 
     try {
@@ -44,21 +33,18 @@ const UserService = {
       TokenService.saveToken(response.data.access_token);
       TokenService.saveRefreshToken(response.data.refresh_token);
       ApiService.setHeader();
-
       // ApiService.mount401Interceptor();
       return response.data.access_token;
     } catch (error) {
+      debugger;
       throw new AuthenticationError(
-        error.response.status,
-        error.response.data.detail
+        "",
+        "Kullanıcı adı veya şifre hatalı"
       );
     }
   },
-
-  /**
-   * Refresh the access token.
-   **/
-  refreshToken: async function() {
+  //Access Token yenile
+  refreshToken: async function () {
     debugger;
     ApiService.removeHeader();
     const refreshToken = TokenService.getRefreshToken();
@@ -83,14 +69,12 @@ const UserService = {
     try {
       const response = await ApiService.customRequest(requestData);
       debugger;
-      if (response == undefined) {
+      if (response == undefined) { //Refresh token süresi dolmuş ise yeni token üretilemez response undefined gelir
         throw new AuthenticationError("", "refresh token süresi dolmuş");
       } else {
         TokenService.saveToken(response.data.access_token);
         TokenService.saveRefreshToken(response.data.refresh_token);
-        // Update the header in ApiService
-        ApiService.setHeader();
-
+        ApiService.setHeader(); //axios istekleri için header'a token'ın eklenmesi
         return response.data.access_token;
       }
     } catch (error) {
@@ -101,13 +85,7 @@ const UserService = {
     }
   },
 
-  /**
-   * Logout the current user by removing the token from storage.
-   *
-   * Will also remove `Authorization Bearer <token>` header from future requests.
-   **/
   logout() {
-    // Remove the token and remove Authorization header from Api Service as well
     TokenService.removeToken();
     TokenService.removeRefreshToken();
     ApiService.removeHeader();
