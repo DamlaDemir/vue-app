@@ -11,7 +11,6 @@ axios.interceptors.response.use(
   },
   async error => {
     debugger;
-
     if (error.request.status == 401) {
       debugger;
       if (error.config.url.includes(`${Constant.Base_Url}/token`)) {
@@ -19,20 +18,27 @@ axios.interceptors.response.use(
       } else {
         try {
           debugger;
+          //401 unauthorize durumunda refresh token ile yeni token alma
           await store.dispatch("auth/refreshToken");
-          // Retry the original request
+          // Başarılı bir şekilde access token alındıysa 401 veren request'i tekrar yollama
           debugger;
-
           return ApiService.customRequest({
             method: error.config.method,
             url: error.config.url,
             data: error.config.data
           });
-        } catch (e) {
+        } catch (error) {
           debugger;
-          store.dispatch("auth/logout");
+          console.log(error);
         }
       }
+    } else if (error.response.status == 400) {
+      if (error.response.data.error == "invalid_grant") {
+        //refresh token süresi dolup yeni token alınamazsa logout işlemi yapılması
+        store.dispatch("auth/logout");
+        throw error;
+      }
     }
+    throw error;
   }
 );

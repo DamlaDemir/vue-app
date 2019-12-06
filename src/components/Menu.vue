@@ -15,7 +15,6 @@
       </span>
     </span>
     <ul
-      class="sub-folders"
       v-if="menus.MENU && menus.MENU.length > 0"
       v-show="menus.TANIM == 'Menü' ? true : showChildren"
     >

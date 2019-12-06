@@ -37,7 +37,6 @@
 <script>
 import Modal from "@/components/Modal";
 import ApiService from "@/services/api.service";
-import Constant from "@/common/Constant";
 
 export default {
   name: "list",
@@ -53,16 +52,21 @@ export default {
   components: { Modal },
   created() {
     this.list = require("@/data/product.json");
-    ApiService.get(`${Constant.Base_Url}/api/Values/GetUsers`)
+    ApiService.get(`/api/Values/GetUsers`)
       .then(res => {
         debugger;
         this.permitList = res.data;
         console.log("List then");
+        this.$infoHelper.showToast(this, "success", `Başarılı`, "Tebrik");
       })
       .catch(error => {
         debugger;
-        console.log(error);
-        console.log("List catch");
+        this.$infoHelper.showToast(
+          this,
+          "danger",
+          `${error.response.status} Hatası`,
+          error.response.statusText
+        );
       });
   },
   methods: {

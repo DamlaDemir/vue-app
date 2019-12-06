@@ -19,16 +19,11 @@
       <div class="toolbar mt-2">
         <Toolbar :toolbarItems="toolbar" />
       </div>
-      <div class="routerView">
-        <b-alert :show="alertShowTime" variant="warning">
-          {{
-          alertText
-          }}
-        </b-alert>
+      <div class="container">
         <!-- <router-view :key="$route.fullPath" /> -->
         <slot />
       </div>
-      <div class="row routerView">
+      <div class="container">
         <Footer />
       </div>
     </div>
@@ -57,8 +52,6 @@ export default {
       toolbarItems: {},
       menuShow: true,
       selectedRows: [],
-      alertShowTime: 0,
-      alertText: "",
       saveFunction: Function,
       removeFunction: Function,
       showModal: false

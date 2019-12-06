@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <component :is="layout" ref="layoutComp">
-      <router-view />
+      <router-view
+        :key="$route.fullPath"
+      /><!-- path değişmediği sürece query değişse bile sayfa yenilenmiyor bu her değişikliği algılamayı sağlıyor-->
     </component>
   </div>
 </template>
@@ -30,9 +32,5 @@ html,
 body {
   height: 100%;
   font-family: "Numans", sans-serif !important;
-}
-.routerView {
-  padding-top: 3%;
-  padding-left: 5%;
 }
 </style>

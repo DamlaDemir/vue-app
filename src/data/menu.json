@@ -41,7 +41,7 @@
               "SILINDI": 0,
               "ICON": "fas fa-book-open",
               "SHOW": true,
-              "LAYOUT": "default"
+              "LAYOUT": "custom"
             }
           ]
         },

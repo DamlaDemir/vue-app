@@ -5,18 +5,26 @@ import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 import DefaultLayout from "./components/layout/DefaultLayout";
 import SimpleLayout from "./components/layout/SimpleLayout";
+import CustomLayout from "./components/layout/CustomLayout";
 import ApiService from "@/services/api.service";
 import Constant from "@/common/Constant";
 import { TokenService } from "@/services/storage.service";
-import "@/services/auth_interceptors"; // apiden dönen isteklerde 401 kontrolü için 
+import InfoHelper from "@/components/infoComponents/InfoHelper";
+import "@/services/auth_interceptors"; // apiden dönen isteklerde 401 kontrolü için
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import "vue-sidebar-menu/dist/vue-sidebar-menu.css";
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.component("defaultLayout", DefaultLayout);
 Vue.component("simpleLayout", SimpleLayout);
+Vue.component("customLayout", CustomLayout);
+
+Object.defineProperty(Vue.prototype, "$infoHelper", { value: InfoHelper });
+//Info helper js dosyasının projenin tamamında this.$infoHelper olarak kullanabilmek için
+//Vue.prototype.$infoHelper = InfoHelper bu şekildede oluşturulabilir ama Object.definePropery ile oluşurduğumuz için this.$infoHelper readonly olur.
 
 new Vue({
   created() {
@@ -46,7 +54,7 @@ new Vue({
     createdRouterObject(menu) {
       //apiden gelen menülerin router ayarlarının yapılması
       var that = this;
-      menu.forEach(function (menuItem) {
+      menu.forEach(function(menuItem) {
         if (!menuItem.BASLIK) {
           import(`@/views/${menuItem.SAYFA}/List.vue`)
             .then(() => {

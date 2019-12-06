@@ -1,13 +1,21 @@
 <template>
-  <div class="col-md-11">
+  <div>
     <b-card header="Product Form">
       <b-form @submit="onSubmit" v-if="show">
         <b-form-group id="input-group-1" label="Product Name" label-for="name">
           <b-form-input id="name" v-model="form.name" required></b-form-input>
         </b-form-group>
 
-        <b-form-group id="input-group-2" label="Description" label-for="description">
-          <b-form-input id="description" v-model="form.description" required></b-form-input>
+        <b-form-group
+          id="input-group-2"
+          label="Description"
+          label-for="description"
+        >
+          <b-form-input
+            id="description"
+            v-model="form.description"
+            required
+          ></b-form-input>
         </b-form-group>
 
         <b-form-group id="input-group-2" label="Price" label-for="price">
@@ -67,7 +75,7 @@ export default {
       debugger;
       //App.vue nun içindeki DefaultLayoutu bulmak için
       let parent = this.$root.$children[0].$children.find(child => {
-        return child.$options.name === "DefaultLayout";
+        return child.$options.name === "CustomLayout";
       });
       parent.getFormData(this.$options.name, "product"); //DefaultLayout.vue daki getFormDataya ulaşmak için
 

@@ -16,7 +16,6 @@
 
 <script>
 import { ToolbarItemTypeEnum } from "@/common/enums/ToolbarItemTypeEnum";
-import InfoHelper from "@/components/infoComponents/InfoHelper";
 
 export default {
   name: "Toolbar",
@@ -49,12 +48,20 @@ export default {
     },
     selectedRowsControl() {
       if (this.$parent.selectedRows.length > 1) {
-        this.$parent.alertShowTime = 4;
-        this.$parent.alertText = "Lütfen tek kayıt seçiniz";
+        this.$infoHelper.showToast(
+          this,
+          "warning",
+          `Uyarı`,
+          "Lütfen tek kayıt seçiniz."
+        );
         return false;
       } else if (this.$parent.selectedRows.length === 0) {
-        this.$parent.alertShowTime = 4;
-        this.$parent.alertText = "Lütfen kayıt seçiniz";
+        this.$infoHelper.showToast(
+          this,
+          "warning",
+          `Uyarı`,
+          "Lütfen  kayıt seçiniz."
+        );
         return false;
       } else return true;
     },
@@ -96,11 +103,12 @@ export default {
           break;
         case ToolbarItemTypeEnum.Remove:
           if (this.selectedRowsControl()) {
-            InfoHelper.msgBoxConfirm(
-              this,
-              "Lütfen onaylayınız",
-              "Silmek istediğinize emin misiniz ?"
-            )
+            this.$infoHelper
+              .msgBoxConfirm(
+                this,
+                "Lütfen onaylayınız",
+                "Silmek istediğinize emin misiniz ?"
+              )
               .then(res => {
                 if (res) {
                   this.$emit(this.$parent.removeFunction());

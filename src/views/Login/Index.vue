@@ -89,7 +89,6 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import InfoHelper from "@/components/infoComponents/InfoHelper";
 
 export default {
   name: "login",
@@ -115,10 +114,9 @@ export default {
             console.log(res);
           })
           .catch(err => {
-            InfoHelper.showToast(this, "danger", "Hata", err.message);
+            this.$infoHelper.showToast(this, "danger", "Hata", err.message);
             debugger;
           });
-        this.password = "";
       }
     }
   }
