@@ -12,8 +12,7 @@ class AuthenticationError extends Error {
 }
 
 const UserService = {
-  login: async function(username, password) {
-    debugger;
+  login: async function (username, password) {
     const requestData = {
       method: "POST",
       url: `/token`,
@@ -35,13 +34,11 @@ const UserService = {
       // ApiService.mount401Interceptor();
       return response.data.access_token;
     } catch (error) {
-      debugger;
       throw new AuthenticationError("", "Kullanıcı adı veya şifre hatalı");
     }
   },
   //Access Token yenile
-  refreshToken: async function() {
-    debugger;
+  refreshToken: async function () {
     ApiService.removeHeader();
     const refreshToken = TokenService.getRefreshToken();
 
@@ -64,7 +61,6 @@ const UserService = {
 
     try {
       const response = await ApiService.customRequest(requestData);
-      debugger;
       if (response == undefined) {
         //Refresh token süresi dolmuş ise yeni token üretilemez response undefined gelir
         throw new AuthenticationError("", "refresh token süresi dolmuş");
@@ -93,9 +89,8 @@ const UserService = {
   },
 
   //token alındıktan sonra giriş yapan kullanıcının bilgilerinin getirilmesi
-  getUser: async function(userRequest) {
+  getUser: async function (userRequest) {
     try {
-      debugger;
       const response = await ApiService.post(
         "/api/Values/GetUser",
         userRequest

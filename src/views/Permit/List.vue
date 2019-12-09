@@ -33,6 +33,7 @@ export default {
       .post(`/api/Values/GetPermits`, permitListRequest)
       .then(res => {
         this.permitList = res.data;
+        console.log(this.permitList);
         this.$infoHelper.showToast(
           this,
           "success",

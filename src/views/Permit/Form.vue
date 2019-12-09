@@ -14,16 +14,8 @@
           <b-form-input id="reason" v-model="formData.Reason" required></b-form-input>
         </b-form-group>
 
-        <!-- <b-form-group id="status" label="Status" label-for="status">
-          <Choices
-            :options="status"
-            v-on:input="form.categories = $event"
-            v-bind:value="form.categories"
-          />
-        </b-form-group>-->
         <b-form-group id="permitType" label="Permit Type" label-for="permitType">
           <Choices
-            :options="permitTypes"
             v-on:input="formData.PermitType = $event"
             v-bind:value="formData.PermitType"
             :maxItem="maxItem"
@@ -63,35 +55,15 @@ export default {
     }
   },
   created() {},
-  computed: {
-    form() {
-      debugger;
-      return this.formData;
-    }
-  },
+  computed: {},
   mounted() {
     this.$nextTick(() => {
-      this.$ApiService
-        .get("/api/Values/GetAnnualTypes")
-        .then(res => {
-          debugger;
-          this.permitTypes = res.data;
-          //App.vue nun içindeki DefaultLayoutu bulmak için
-          let parent = this.$root.$children[0].$children.find(child => {
-            return child.$options.name === "CustomLayout";
-          });
-          parent.getFormData(this.$options.name, "/api/Values/GetPermitById"); //DefaultLayout.vue daki getFormDataya ulaşmak için
-        })
-        .catch(error => {
-          this.$infoHelper.showToast(
-            this,
-            "danger",
-            `${error.response.status} Hatası`,
-            error.response.statusText
-          );
-        });
       debugger;
-
+      //App.vue nun içindeki DefaultLayoutu bulmak için
+      let parent = this.$root.$children[0].$children.find(child => {
+        return child.$options.name === "CustomLayout";
+      });
+      parent.getFormData(this.$options.name, "/api/Values/GetPermitById"); //DefaultLayout.vue daki getFormDataya ulaşmak için
       this.$parent.saveFunction = this.saveProduct;
     });
   }

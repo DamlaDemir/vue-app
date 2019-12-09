@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <component :is="layout" ref="layoutComp">
-      <router-view
-        :key="$route.fullPath"
-      /><!-- path değişmediği sürece query değişse bile sayfa yenilenmiyor bu her değişikliği algılamayı sağlıyor-->
+      <router-view :key="$route.fullPath" />
+      <!-- path değişmediği sürece query değişse bile sayfa yenilenmiyor bu her değişikliği algılamayı sağlıyor-->
     </component>
   </div>
 </template>
@@ -27,10 +26,10 @@ export default {
 };
 </script>
 <style>
-@import url("https://fonts.googleapis.com/css?family=Numans");
+/* @import url("https://fonts.googleapis.com/css?family=Numans");
 html,
 body {
   height: 100%;
   font-family: "Numans", sans-serif !important;
-}
+} */
 </style>

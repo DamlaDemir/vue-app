@@ -4,7 +4,7 @@
     "name": "Product1",
     "price": 50,
     "description": "Product1 Description",
-    "categories": null
+    "categories": 2
   },
   {
     "id": 2,
