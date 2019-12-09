@@ -41,7 +41,7 @@
               "SILINDI": 0,
               "ICON": "fas fa-book-open",
               "SHOW": true,
-              "LAYOUT": "custom"
+              "LAYOUT": "default"
             }
           ]
         },
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "ID": 9,
+      "ID": 10,
       "AKTIF": 1,
       "TANIM": "",
       "SAYFA": "Note",
@@ -124,6 +124,33 @@
       "SHOW": false,
       "MENU": [],
       "LAYOUT": "default"
+    },
+    {
+      "ID": 11,
+      "AKTIF": 1,
+      "TANIM": "Permit Op.",
+      "SAYFA": null,
+      "SIRA_NO": 2,
+      "BASLIK": true,
+      "SILINDI": 0,
+      "ICON": "fas fa-book-open",
+      "SHOW": true,
+      "LAYOUT": "custom",
+      "MENU": [
+        {
+          "ID": 12,
+          "AKTIF": 1,
+          "TANIM": "Permit",
+          "SAYFA": "Permit",
+          "SIRA_NO": 1,
+          "BASLIK": false,
+          "SILINDI": 0,
+          "MENU": null,
+          "ICON": "fas fa-book-open",
+          "SHOW": true,
+          "LAYOUT": "custom"
+        }
+      ]
     }
   ]
 }

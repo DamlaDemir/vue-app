@@ -191,5 +191,58 @@
         "Path": "/Setting/Form"
       }
     ]
+  },
+  {
+    "MENU_ID": 12,
+    "MENU_AUTH": [
+      {
+        "Title": "Add",
+        "Icon": "fas fa-plus-circle fa-2x",
+        "Options": null,
+        "Sequence": 1,
+        "Css": "warning",
+        "Show": true,
+        "Type": 1,
+        "Path": "/Permit/Form"
+      },
+      {
+        "Title": "Edit",
+        "Icon": "fas fa-edit fa-2x",
+        "Options": null,
+        "Sequence": 2,
+        "Css": "danger",
+        "Show": true,
+        "Type": 3,
+        "Path": "/Permit/Form"
+      },
+      {
+        "Title": "Save",
+        "Icon": "far fa-save fa-2x",
+        "Options": null,
+        "Sequence": 3,
+        "Css": "primary",
+        "Show": true,
+        "Type": 5
+      },
+      {
+        "Title": "View",
+        "Icon": "fas fa-search fa-2x",
+        "Options": null,
+        "Sequence": 4,
+        "Css": "secondary",
+        "Show": true,
+        "Type": 4,
+        "Path": "/Permit/Form"
+      },
+      {
+        "Title": "Remove",
+        "Icon": "fas fa-trash-alt fa-2x",
+        "Options": null,
+        "Sequence": 5,
+        "Css": "success",
+        "Show": true,
+        "Type": 2
+      }
+    ]
   }
 ]

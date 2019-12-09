@@ -25,6 +25,7 @@ Vue.component("customLayout", CustomLayout);
 Object.defineProperty(Vue.prototype, "$infoHelper", { value: InfoHelper });
 //Info helper js dosyasının projenin tamamında this.$infoHelper olarak kullanabilmek için
 //Vue.prototype.$infoHelper = InfoHelper bu şekildede oluşturulabilir ama Object.definePropery ile oluşurduğumuz için this.$infoHelper readonly olur.
+Object.defineProperty(Vue.prototype, "$ApiService", { value: ApiService });
 
 new Vue({
   created() {

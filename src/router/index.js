@@ -32,7 +32,6 @@ router.afterEach(() => {
 });
 
 router.beforeEach((to, from, next) => {
-  debugger;
   const isPublic = to.matched.some(record => record.meta.public);
   const onlyWhenLoggedOut = to.matched.some(
     record => record.meta.onlyWhenLoggedOut

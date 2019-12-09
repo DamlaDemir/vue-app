@@ -2,10 +2,7 @@
   <div id="demo" :class="[{ collapsed: collapsed }]">
     <Modal :modalShow="showModal">
       <keep-alive>
-        <component
-          ref="formComp"
-          :is="this.$store.state.toolbar.formComponent"
-        ></component>
+        <component ref="formComp" :is="this.$store.state.toolbar.formComponent"></component>
       </keep-alive>
     </Modal>
     <navbar />
@@ -35,7 +32,7 @@
           </option>
         </select>
       </div>
-      <hr style="margin: 50px 0px;border: 1px solid #e3e3e3;" /> -->
+      <hr style="margin: 50px 0px;border: 1px solid #e3e3e3;" />-->
       <slot />
       <sidebar-menu
         :menu="menu"
@@ -72,28 +69,40 @@ export default {
       menu: [
         {
           header: true,
-          title: "Getting Started",
+          title: "Operations",
           hiddenOnCollapse: true
         },
         {
-          href: "/",
-          title: "Installation",
-          icon: "fa fa-download"
+          title: "Permit Operations",
+          icon: "fa fa-download",
+          child: [
+            {
+              href: "/Permit/List?menu_id=12",
+              title: "Permit",
+              icon: "fa fa-code"
+            }
+          ]
         },
         {
-          href: "/basic-usage",
-          title: "Basic Usage",
-          icon: "fa fa-code"
+          title: "User Operations",
+          icon: "fa fa-download",
+          child: [
+            {
+              href: "/User/List?menu_id=5",
+              title: "User",
+              icon: "fa fa-code"
+            }
+          ]
         },
         {
           header: true,
-          title: "Usage",
+          title: "Example",
           hiddenOnCollapse: true
         },
         {
-          href: "/props",
-          title: "Props",
-          icon: "fa fa-cogs"
+          href: "/Permit/List?menu_id=5",
+          title: "Permit",
+          icon: "fa fa-download"
         },
         {
           href: "/events",
@@ -225,10 +234,33 @@ export default {
             return child.$options.name === name;
           });
           if (this.$route.params.id !== undefined) {
-            let list = require(`@/data/${url}.json`); //apiden ilgili kaydın  çekilmesi
-            form.formData = list.filter(
-              x => x.id == parseInt(this.$route.params.id)
-            )[0];
+            // let list = require(`@/data/${url}.json`); //apiden ilgili kaydın  çekilmesi
+            const requestData = {
+              id: this.$route.params.id
+            };
+            this.$ApiService
+              .post(url, requestData)
+              .then(res => {
+                debugger;
+                form.formData = res.data;
+                this.$infoHelper.showToast(
+                  this,
+                  "success",
+                  `Başarılı`,
+                  "Veriler başarılı bir şekilde getirildi."
+                );
+              })
+              .catch(error => {
+                this.$infoHelper.showToast(
+                  this,
+                  "danger",
+                  `${error.response.status} Hatası`,
+                  error.response.statusText
+                );
+              });
+            // form.formData = list.filter(
+            //   x => x.id == parseInt(this.$route.params.id)
+            // )[0];
           }
           break;
         case ToolbarItemTypeEnum.View:

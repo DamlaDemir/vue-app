@@ -1,9 +1,9 @@
 const TOKEN_KEY = "access_token";
 const REFRESH_TOKEN_KEY = "refresh_token";
+const USER_KEY = "user";
 
 const TokenService = {
   getToken() {
-    debugger;
     return localStorage.getItem(TOKEN_KEY);
   },
 
@@ -25,6 +25,15 @@ const TokenService = {
 
   removeRefreshToken() {
     localStorage.removeItem(REFRESH_TOKEN_KEY);
+  },
+  saveUser(user) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  },
+  removeUser() {
+    localStorage.removeItem(USER_KEY);
+  },
+  getUser() {
+    return localStorage.getItem(USER_KEY);
   }
 };
 

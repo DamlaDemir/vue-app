@@ -1,6 +1,5 @@
 import ApiService from "@/services/api.service";
 import { TokenService } from "@/services/storage.service";
-import Constant from "@/common/Constant";
 var qs = require("qs");
 
 class AuthenticationError extends Error {
@@ -17,7 +16,7 @@ const UserService = {
     debugger;
     const requestData = {
       method: "POST",
-      url: `${Constant.Base_Url}/token`,
+      url: `/token`,
       data: qs.stringify({
         grant_type: "password",
         username: username,
@@ -48,7 +47,7 @@ const UserService = {
 
     const requestData = {
       method: "post",
-      url: `${Constant.Base_Url}/token`,
+      url: `/token`,
       data: qs.stringify({
         grant_type: "refresh_token",
         refresh_token: refreshToken
@@ -86,10 +85,27 @@ const UserService = {
   logout() {
     TokenService.removeToken();
     TokenService.removeRefreshToken();
+    TokenService.removeUser();
     ApiService.removeHeader();
 
     // NOTE: Again, we'll cover the 401 Interceptor a bit later.
     // ApiService.unmount401Interceptor();
+  },
+
+  //token alındıktan sonra giriş yapan kullanıcının bilgilerinin getirilmesi
+  getUser: async function(userRequest) {
+    try {
+      debugger;
+      const response = await ApiService.post(
+        "/api/Values/GetUser",
+        userRequest
+      );
+      TokenService.saveUser(response.data);
+      return response.data;
+    } catch (error) {
+      this.logout();
+      throw error;
+    }
   }
 };
 

@@ -24,6 +24,7 @@ const ApiService = {
   },
 
   post(resource, data) {
+    debugger;
     return axios.post(resource, data);
   },
 

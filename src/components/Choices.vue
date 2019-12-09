@@ -9,7 +9,7 @@
     <option placeholder>Seçim yapınız</option>
     <option v-for="option in options" :value="option.id" :key="option.id">
       {{
-      option.name
+      option.text
       }}
     </option>
   </select>
@@ -27,12 +27,25 @@ export default {
   watch: {
     value() {
       //sayfa ilk açıldığında choices'in dbden gelen değeri varsa dolmasını sağlar(setChoiceByValue ile gelen değerler set edilir)
-      if (this.value.length > 0) {
-        this.value.forEach(element => {
-          choicesSelect.setChoiceByValue(`${element}`);
-        });
+      if (this.maxItem > 1 || this.maxItem == null) {
+        //maxitem verilmezse default multi selectize olur.Max item 1den büyük verilirsede multi olur
+        if (this.value.length > 1) {
+          this.value.forEach(element => {
+            choicesSelect.setChoiceByValue(`${element}`);
+          });
+        }
+      } else if (this.maxItem == 1) {
+        debugger;
+        console.log(this.options);
+        console.log(this.maxItem);
+        //selectize multi değilse tek değer gelir
+        choicesSelect.setChoiceByValue(`${this.value}`);
       }
     }
+  },
+  created() {
+    debugger;
+    console.log(this.options);
   },
   mounted() {
     var that = this;
